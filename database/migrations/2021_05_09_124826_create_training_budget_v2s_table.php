@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTrainingsTable extends Migration
+class CreateTrainingBudgetV2sTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateTrainingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('trainings', function (Blueprint $table) {
+        Schema::create('training_budget_v2s', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('year')->nullable();
+            $table->string('amount')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateTrainingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trainings');
+        Schema::dropIfExists('training_budget_v2s');
     }
 }

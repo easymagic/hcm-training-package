@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TrainingUser;
+use App\Models\TrainingBudgetV2;
 use Illuminate\Http\Request;
 
-class TrainingUserController extends Controller
+class TrainingBudgetV2Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TrainingUserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TrainingUser  $trainingUser
+     * @param  \App\Models\TrainingBudgetV2  $trainingBudgetV2
      * @return \Illuminate\Http\Response
      */
-    public function show(TrainingUser $trainingUser)
+    public function show(TrainingBudgetV2 $trainingBudgetV2)
     {
         //
     }
@@ -52,10 +52,10 @@ class TrainingUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TrainingUser  $trainingUser
+     * @param  \App\Models\TrainingBudgetV2  $trainingBudgetV2
      * @return \Illuminate\Http\Response
      */
-    public function edit(TrainingUser $trainingUser)
+    public function edit(TrainingBudgetV2 $trainingBudgetV2)
     {
         //
     }
@@ -64,10 +64,10 @@ class TrainingUserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TrainingUser  $trainingUser
+     * @param  \App\Models\TrainingBudgetV2  $trainingBudgetV2
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TrainingUser $trainingUser)
+    public function update(Request $request, TrainingBudgetV2 $trainingBudgetV2)
     {
         //
     }
@@ -75,10 +75,10 @@ class TrainingUserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TrainingUser  $trainingUser
+     * @param  \App\Models\TrainingBudgetV2  $trainingBudgetV2
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TrainingUser $trainingUser)
+    public function destroy(TrainingBudgetV2 $trainingBudgetV2)
     {
         //
     }

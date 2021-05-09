@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TrainingBudget;
+use App\Models\TrainingUserV2;
 use Illuminate\Http\Request;
 
-class TrainingBudgetController extends Controller
+class TrainingUserV2Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TrainingBudgetController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TrainingBudget  $trainingBudget
+     * @param  \App\Models\TrainingUserV2  $trainingUserV2
      * @return \Illuminate\Http\Response
      */
-    public function show(TrainingBudget $trainingBudget)
+    public function show(TrainingUserV2 $trainingUserV2)
     {
         //
     }
@@ -52,10 +52,10 @@ class TrainingBudgetController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TrainingBudget  $trainingBudget
+     * @param  \App\Models\TrainingUserV2  $trainingUserV2
      * @return \Illuminate\Http\Response
      */
-    public function edit(TrainingBudget $trainingBudget)
+    public function edit(TrainingUserV2 $trainingUserV2)
     {
         //
     }
@@ -64,10 +64,10 @@ class TrainingBudgetController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TrainingBudget  $trainingBudget
+     * @param  \App\Models\TrainingUserV2  $trainingUserV2
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TrainingBudget $trainingBudget)
+    public function update(Request $request, TrainingUserV2 $trainingUserV2)
     {
         //
     }
@@ -75,10 +75,10 @@ class TrainingBudgetController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TrainingBudget  $trainingBudget
+     * @param  \App\Models\TrainingUserV2  $trainingUserV2
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TrainingBudget $trainingBudget)
+    public function destroy(TrainingUserV2 $trainingUserV2)
     {
         //
     }
