@@ -38,12 +38,13 @@ class TrainingV2 extends Model
                 'year'=>'',
             'cost'=>'required',
             'is_free'=>'required',
-            'type'=>'required',
+            'type'=>'required', //online or physical
             'resource_link'=>'required',
             'start_date'=>'required',
             'stop_date'=>'required',
-            'department_id'=>'required'
-            
+            'department_id'=>'required',
+            'created_by'=>'required'
+
             ];
     }
 
