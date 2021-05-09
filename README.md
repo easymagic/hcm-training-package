@@ -1,2 +1,1 @@
-# hcm-training-package
- 
+# hcmpal
