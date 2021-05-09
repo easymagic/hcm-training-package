@@ -74,7 +74,7 @@
                                                 <button type="submit" class="dropdown-item btn btn-danger btn-sm" data-backdrop="false"  data-toggle="modal" data-target="#approveReject" >Remove</button>
 
                                             </form>
-                                            
+
 
                                         </div>
                                     </div>

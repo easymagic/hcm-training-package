@@ -223,6 +223,14 @@
                                                 @endif
 
 
+                                                    <li class="site-menu-item ">
+                                                        <a class="animsition-link" href="{{ route('training-budgetv2.index')  }}">
+                                                            <span class="site-menu-title">Training Budget</span>
+                                                        </a>
+                                                    </li>
+
+
+
 
 
                                             </ul>
@@ -367,6 +375,10 @@
                                                     <span class="site-menu-title">HMO Service</span>
                                                 </a>
                                             </li>
+
+
+
+
 
 
                                         </ul>
