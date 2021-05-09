@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class TrainingBudget extends Model
 {
     //
+
+    static function createTrainingBudget(){
+
+    }
+
 }
