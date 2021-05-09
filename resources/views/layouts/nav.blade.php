@@ -59,7 +59,7 @@
 
 
 
-                                                @include('training_new.navs.nav_include')
+{{--                                                @include('training_new.navs.nav_include')--}}
 
 
 
