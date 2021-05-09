@@ -34,7 +34,10 @@
                     <table class="table table-striped">
                         <tr>
                             <th>
-                                Workflow-Name
+                                Year
+                            </th>
+                            <th>
+                                Amount
                             </th>
                             <th>
                                 Actions
@@ -46,7 +49,10 @@
                             <tr>
 
                                 <td>
-                                    {{ $item->name }}
+                                    {{ $item->year }}
+                                </td>
+                                <td>
+                                    {{ $item->amount }}
                                 </td>
 
                                 <td>
@@ -60,7 +66,7 @@
 
                                             <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="dropdown-item" data-backdrop="false">Modify</a>
 
-                                            <form method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('workflow.destroy',$item->id) }}">
+                                            <form method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('training-budgetv2.destroy',$item->id) }}">
 
                                                 @csrf
                                                 @method('DELETE')
@@ -68,8 +74,7 @@
                                                 <button type="submit" class="dropdown-item btn btn-danger btn-sm" data-backdrop="false"  data-toggle="modal" data-target="#approveReject" >Remove</button>
 
                                             </form>
-
-                                            <a style="margin-bottom: 11px;" href="{{ route('workflow-stages.index') }}?workflow_id={{ $item->id }}" target="_blank" class="dropdown-item">Stages</a>
+                                            
 
                                         </div>
                                     </div>
