@@ -50,13 +50,66 @@ class TrainingV2 extends Model
 
     static function createTraining(){
 
+      $data = request()->validate(self::getValidation());
+      $obj = self::getFactory();
+      $obj = $obj->create($data);
+
+      return response()->json([
+          'message'=>'New Training request sent',
+          'error'=>false
+      ]);
+
     }
 
     static function updateTraining($id){
+      $obj = self::query()->find($id);
+      $data = request()->validate(self::getValidation());
+      $obj = $obj->update($data);
+
+        return response()->json([
+            'message'=>'New Training request updated',
+            'error'=>false
+        ]);
+
+    }
+
+    static function removeTraining($id){
+        $obj = self::query()->find($id);
+        $obj->delete();
+
+        return response()->json([
+            'message'=>'Training removed',
+            'error'=>false
+        ]);
 
     }
 
 
+    static function approve($id){
+        $obj = self::query()->find($id);
+        $obj->update([
+            'approved'=>1
+        ]);
+
+        return response()->json([
+            'message'=>'Training approved',
+            'error'=>false
+        ]);
+
+    }
+
+    static function unApprove($id){
+        $obj = self::query()->find($id);
+        $obj->update([
+            'approved'=>0
+        ]);
+
+        return response()->json([
+            'message'=>'Training un-approved',
+            'error'=>false
+        ]);
+
+    }
 
 
 
