@@ -671,3 +671,7 @@ Route::get('/hmo/getHMOHospitalsBand/{id}', 'AARHMO@getHMOHospitalsBand')->name(
 Route::get('/hmo/deleteUserHMO/{userId}', 'AARHMO@deleteUserHMO')->name('deleteUserHMO');
 
 
+///////Training Package//////////
+Route::resource('trainingv2', 'TrainingController')->middleware(['auth']);
+Route::resource('training-budgetv2', 'TrainingBudgetController')->middleware(['auth']);
+Route::resource('training-userv2', 'TrainingUserController')->middleware(['auth']);
