@@ -1,5 +1,5 @@
 <!-- Modal -->
-<form method="POST" action="{{ route('workflow.update',[$item->id]) }}">
+<form method="POST" action="{{ route('training-budgetv2.update',[$item->id]) }}">
     <div id="edit{{ $item->id }}" class="modal fade" role="dialog">
         <div class="modal-dialog">
 {{--            modal-lg--}}
