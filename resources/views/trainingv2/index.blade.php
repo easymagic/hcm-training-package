@@ -1,8 +1,8 @@
-@extends('layouts.main')
+@extends('layouts.master')
 
 @section('content')
 
-    <div class="col-lg-10 post-list" style="@yield('main-center-style','margin-left: 1%;');">
+    <div class="col-md-12 post-list" style="/* margin-left: 1%; */margin-top: 25px;">
 
         <div class="container">
             <div class="row justify-content-center">
@@ -13,43 +13,46 @@
     margin-bottom: 17px;
     font-size: 18px;
 ">
-                        Workflows
+                        Training Budget
                     </div>
 
-                    @include('workflow.create')
+                    @include('training-budgetv2.create')
 
-                    @foreach ($workflows as $item)
+                    @foreach ($list as $item)
 
 
-                        @include('workflow.edit')
+                        @include('training-budgetv2.edit')
 
 
                     @endforeach
 
 
                     <div class="col-md-12" align="right">
-                        <a style="margin-bottom: 11px;" href="{{ route('workflow-stages.index') }}" class="btn btn-sm btn-info">
-                            Workflow-Stages
-                        </a>
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Workflow</button>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Training Budget</button>
                     </div>
 
                     <table class="table table-striped">
                         <tr>
                             <th>
-                                Workflow-Name
+                                Year
+                            </th>
+                            <th>
+                                Amount
                             </th>
                             <th>
                                 Actions
                             </th>
                         </tr>
-                        @foreach ($workflows as $item)
+                        @foreach ($list as $item)
 
 
                             <tr>
 
                                 <td>
-                                    {{ $item->name }}
+                                    {{ $item->year }}
+                                </td>
+                                <td>
+                                    {{ $item->amount }}
                                 </td>
 
                                 <td>
@@ -63,7 +66,7 @@
 
                                             <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="dropdown-item" data-backdrop="false">Modify</a>
 
-                                            <form method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('workflow.destroy',$item->id) }}">
+                                            <form method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('training-budgetv2.destroy',$item->id) }}">
 
                                                 @csrf
                                                 @method('DELETE')
@@ -72,7 +75,6 @@
 
                                             </form>
 
-                                            <a style="margin-bottom: 11px;" href="{{ route('workflow-stages.index') }}?workflow_id={{ $item->id }}" target="_blank" class="dropdown-item">Stages</a>
 
                                         </div>
                                     </div>
@@ -93,5 +95,18 @@
 
     </div>
 
+    <div style="clear: both;">&nbsp;</div>
+
+
+@endsection
+
+@section('scripts')
+
+    <script>
+        // alert('ok');
+    </script>
+
+
+    @include('response-message')
 
 @endsection
