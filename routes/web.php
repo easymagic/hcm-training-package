@@ -672,6 +672,6 @@ Route::get('/hmo/deleteUserHMO/{userId}', 'AARHMO@deleteUserHMO')->name('deleteU
 
 
 ///////Training Package//////////
-Route::resource('trainingv2', 'TrainingController')->middleware(['auth']);
-Route::resource('training-budgetv2', 'TrainingBudgetController')->middleware(['auth']);
-Route::resource('training-userv2', 'TrainingUserController')->middleware(['auth']);
+Route::resource('trainingv2', 'TrainingV2Controller')->middleware(['auth']);
+Route::resource('training-budgetv2', 'TrainingBudgetV2Controller')->middleware(['auth']);
+Route::resource('training-userv2', 'TrainingUserV2Controller')->middleware(['auth']);
