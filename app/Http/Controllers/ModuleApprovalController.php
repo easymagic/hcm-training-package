@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class ModuleApprovalController extends Controller
 {
+
+    private $data = [];
     /**
      * Display a listing of the resource.
      *
@@ -44,10 +46,17 @@ class ModuleApprovalController extends Controller
      * @param  \App\Models\ModuleApproval  $moduleApproval
      * @return \Illuminate\Http\Response
      */
-    public function show(ModuleApproval $moduleApproval)
+    public function show($id) //token in base64-encode
     {
         //
+        $module = base64_decode(\request('module'));
+        $this->data['module'] = ModuleApproval::fetchByModule($id,$module)->first()->getByModule()->first();
+        $this->data['list'] = ModuleApproval::fetchByModule($id,$module)->get();
+
+        return view('module_approval.index',$this->data);
+
     }
+
 
     /**
      * Show the form for editing the specified resource.
