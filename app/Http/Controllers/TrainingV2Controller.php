@@ -20,6 +20,7 @@ class TrainingV2Controller extends Controller
 
     function loadTraining(){
       $this->data['list'] = TrainingV2::query()->get();
+      $this->data['departments'] = TrainingV2::getDepartments();
     }
 
     public function index()

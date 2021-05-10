@@ -13,31 +13,37 @@
     margin-bottom: 17px;
     font-size: 18px;
 ">
-                        Training Budget
+                        Organizational Trainings
                     </div>
 
-                    @include('training-budgetv2.create')
+                    @include('trainingv2.create')
 
                     @foreach ($list as $item)
 
 
-                        @include('training-budgetv2.edit')
+                        @include('trainingv2.edit')
 
 
                     @endforeach
 
 
                     <div class="col-md-12" align="right">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Training Budget</button>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Training</button>
                     </div>
 
                     <table class="table table-striped">
                         <tr>
                             <th>
+                                Name
+                            </th>
+                            <th>
                                 Year
                             </th>
                             <th>
-                                Amount
+                                Type
+                            </th>
+                            <th>
+                                Cost
                             </th>
                             <th>
                                 Actions
@@ -49,10 +55,19 @@
                             <tr>
 
                                 <td>
+                                    {{ $item->name }}
+                                </td>
+
+                                <td>
                                     {{ $item->year }}
                                 </td>
+
                                 <td>
-                                    {{ $item->amount }}
+                                    {{ $item->type }}
+                                </td>
+
+                                <td>
+                                    {{ $item->cost }}
                                 </td>
 
                                 <td>
@@ -63,6 +78,7 @@
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; transform: translate3d(-5px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
 
+                                            <a  href="#"  style="margin-bottom: 11px;"  class="dropdown-item">Approvals</a>
 
                                             <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="dropdown-item" data-backdrop="false">Modify</a>
 
