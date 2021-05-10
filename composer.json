@@ -36,7 +36,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "App\\Providers\\TrainingPackageProvider"
+                "App\\Providers\\TrainingPackageProvider",
+                "App\\Providers\\WorkflowPackageProvider"
             ]
         }
     },
