@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ModuleApproval;
+use App\Models\ModuleApproval;
 use Illuminate\Http\Request;
 
 class ModuleApprovalController extends Controller
@@ -41,7 +41,7 @@ class ModuleApprovalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ModuleApproval  $moduleApproval
+     * @param  \App\Models\ModuleApproval  $moduleApproval
      * @return \Illuminate\Http\Response
      */
     public function show(ModuleApproval $moduleApproval)
@@ -52,7 +52,7 @@ class ModuleApprovalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ModuleApproval  $moduleApproval
+     * @param  \App\Models\ModuleApproval  $moduleApproval
      * @return \Illuminate\Http\Response
      */
     public function edit(ModuleApproval $moduleApproval)
@@ -64,7 +64,7 @@ class ModuleApprovalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ModuleApproval  $moduleApproval
+     * @param  \App\Models\ModuleApproval  $moduleApproval
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ModuleApproval $moduleApproval)
@@ -75,7 +75,7 @@ class ModuleApprovalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ModuleApproval  $moduleApproval
+     * @param  \App\Models\ModuleApproval  $moduleApproval
      * @return \Illuminate\Http\Response
      */
     public function destroy(ModuleApproval $moduleApproval)

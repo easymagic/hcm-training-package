@@ -15,6 +15,16 @@ class CreateModuleApprovalsTable extends Migration
     {
         Schema::create('module_approvals', function (Blueprint $table) {
             $table->increments('id');
+
+
+            $table->integer('module_id')->nullable();
+            $table->string('module')->nullable();
+            $table->integer('stage_id')->nullable();
+            $table->integer('status')->nullable();
+            $table->integer('approver_id')->nullable();
+            $table->text('comments')->nullable();
+
+
             $table->timestamps();
         });
     }
