@@ -27,6 +27,7 @@ class CreateTrainingV2sTable extends Migration
             $table->string('stop_date')->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('department_id')->nullable();
+            $table->integer('workflow_id')->nullable();
 
             $table->timestamps();
         });

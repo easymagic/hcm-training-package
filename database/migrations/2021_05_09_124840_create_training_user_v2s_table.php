@@ -21,7 +21,7 @@ class CreateTrainingUserV2sTable extends Migration
             $table->string('rating')->nullable();
             $table->string('feedback')->nullable();
             $table->string('document_upload')->nullable();
-            $table->integer('workflow_id')->nullable();
+
 
             $table->timestamps();
         });

@@ -194,6 +194,11 @@ class ModuleApproval extends Model
 
     }
 
+    static function getWorkFlowByName($name){
+        $record = Workflow::query()->where('name',$name);
+        return $record;
+    }
+
     static function createApproval($data){
         $obj = new self;
         $obj = $obj->create([

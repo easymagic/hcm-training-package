@@ -9,7 +9,7 @@ class TrainingV2 extends Model
     //
 
     protected $fillable = ['name','year','cost','is_free','type','resource_link','approved','start_date','stop_date',
-        'created_by','department_id'];
+        'created_by','department_id','workflow_id'];
 
 
 
@@ -50,8 +50,26 @@ class TrainingV2 extends Model
 
     static function createTraining(){
 
+        $workFlowName = 'training-workflow';
+
+        $workFlow = ModuleApproval::getWorkFlowByName($workFlowName);
+        if (!$workFlow->exists()){
+
+            return response()->json([
+                'message'=>"Workflow with name '$workFlowName' not configured!",
+                'error'=>true
+            ]);
+
+        }
+
+        $workFlow = $workFlow->first();
+
       $data = request()->validate(self::getValidation());
+
+      $data['workflow_id'] = $workFlow->id;
+
       $obj = self::getFactory();
+
       $obj = $obj->create($data);
 
       return response()->json([
