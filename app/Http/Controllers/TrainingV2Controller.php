@@ -3,18 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\TrainingV2;
+use App\Traits\ResponseTraitV2;
 use Illuminate\Http\Request;
 
 class TrainingV2Controller extends Controller
 {
+
+    use ResponseTraitV2;
+
+    private $data = [];
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    function loadTraining(){
+      $this->data['list'] = TrainingV2::query()->get();
+    }
+
     public function index()
     {
         //
+        $this->loadTraining();
+        return view('trainingv2.index',$this->data);
     }
 
     /**
@@ -36,6 +48,7 @@ class TrainingV2Controller extends Controller
     public function store(Request $request)
     {
         //
+        return  $this->resolveResponse(TrainingV2::createTraining());
     }
 
     /**
@@ -67,9 +80,10 @@ class TrainingV2Controller extends Controller
      * @param  \App\Models\TrainingV2  $trainingV2
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TrainingV2 $trainingV2)
+    public function update(Request $request, $id)
     {
         //
+        return  $this->resolveResponse(TrainingV2::updateTraining($id));
     }
 
     /**
@@ -78,8 +92,10 @@ class TrainingV2Controller extends Controller
      * @param  \App\Models\TrainingV2  $trainingV2
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TrainingV2 $trainingV2)
+    public function destroy($id)
     {
-        //
+        return $this->resolveResponse(TrainingV2::removeTraining($id));
     }
+
+
 }

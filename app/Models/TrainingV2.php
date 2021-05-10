@@ -12,8 +12,6 @@ class TrainingV2 extends Model
         'created_by','department_id','workflow_id'];
 
 
-
-
     static function getDepartments(){
 
         $dep1 = new \stdClass();
@@ -35,7 +33,7 @@ class TrainingV2 extends Model
     static function getValidation(){
         return [
                'name'=>'required',
-                'year'=>'',
+                'year'=>'required',
             'cost'=>'required',
             'is_free'=>'required',
             'type'=>'required', //online or physical
