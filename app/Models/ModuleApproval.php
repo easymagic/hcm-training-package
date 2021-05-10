@@ -22,6 +22,20 @@ class ModuleApproval extends Model
         return self::query()->where('module',$module)->where('module_id',$id);
     }
 
+    function getNarration(){
+        if (method_exists($this->getByModule(),'getNarration')){
+            return  $this->getByModule()->getNarration();
+        }
+        return 'No set narration!';
+    }
+
+    function getPreviewLink(){
+        if (method_exists($this->getByModule(),'getPreviewLink')){
+            return  $this->getByModule()->getPreviewLink();
+        }
+        return '(no-link)';
+    }
+
     static function getById($id){
         return self::query()->find($id);
     }
