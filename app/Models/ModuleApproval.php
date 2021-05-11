@@ -24,7 +24,7 @@ class ModuleApproval extends Model
     static function getFirstStageForWorkflow($name){
         return Stage::query()->whereHas('workflow',function(Builder $builder) use ($name){
             return $builder->where('name',$name);
-        })->where('position',1)->first();
+        })->where('position',1);
     }
 
     function getByModule(){
