@@ -33,9 +33,19 @@ class ModuleApproval extends Model
         return self::query()->where('module',$module)->where('module_id',$id);
     }
 
+    function getModuleObject(){
+        $mod = $this->getByModule()->first();
+        $module_id = $mod->module_id;
+        $cls = $mod->module;
+
+        return $cls::query()->find($module_id);
+    }
+
     function getNarration(){
-        if (method_exists($this->getByModule(),'getNarration')){
-            return  $this->getByModule()->getNarration();
+        $obj = $this->getModuleObject();
+        dd($obj);
+        if (method_exists($obj,'getNarration')){
+            return  $obj->getNarration();
         }
         return 'No set narration!';
     }
@@ -98,8 +108,8 @@ class ModuleApproval extends Model
 
         }
 
-        if (method_exists($module,'notifyApproved')){
-            $module->notifyApproved(self::getSubscribers($record->id));
+        if (method_exists($module,'notifyFinalApproved')){
+            $module->notifyFinalApproved(self::getSubscribers($record->id));
         }
 
         return response()->json([

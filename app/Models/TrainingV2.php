@@ -124,7 +124,7 @@ class TrainingV2 extends Model
     static function unApprove($id){
         $obj = self::query()->find($id);
         $obj->update([
-            'approved'=>0
+            'approved'=>2
         ]);
 
         return response()->json([
@@ -132,6 +132,11 @@ class TrainingV2 extends Model
             'error'=>false
         ]);
 
+    }
+
+
+    function getNarration(){
+        return $this->id;
     }
 
 

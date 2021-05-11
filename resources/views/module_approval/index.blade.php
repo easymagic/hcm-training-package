@@ -13,7 +13,7 @@
     margin-bottom: 17px;
     font-size: 18px;
 ">
-                        Approval
+                        Approval For {{ $module->getNarration() }}
                     </div>
 
                     @include('training-budgetv2.create')

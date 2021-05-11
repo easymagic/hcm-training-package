@@ -657,7 +657,7 @@ Route::prefix('onboard')->group(function(){
 //////////HMO SETUP/////////////////
 Route::get('/hmo-setup', 'AARHMO@HMO')->name('hmo');
 Route::post('/hmo-setup', 'AARHMO@newHMO')->name('hmo');
-Route::get('/{hmoName}/{hmoId}', 'AARHMO@HMOHospitalsPreview');
+//Route::get('/{hmoName}/{hmoId}', 'AARHMO@HMOHospitalsPreview');
 Route::get('/hmo/getHospital/{id}', 'AARHMO@getHMOHospital')->name('getHMOHospital');
 Route::post('/patchHospital', 'AARHMO@patchHMOHospital')->name('patchHMOHospital');
 
@@ -676,3 +676,4 @@ Route::resource('trainingv2', 'TrainingV2Controller')->middleware(['auth']);
 Route::resource('training-budgetv2', 'TrainingBudgetV2Controller')->middleware(['auth']);
 Route::resource('training-userv2', 'TrainingUserV2Controller')->middleware(['auth']);
 Route::resource('module-approval', 'ModuleApprovalController')->middleware(['auth']);
+//ModuleApprovalController

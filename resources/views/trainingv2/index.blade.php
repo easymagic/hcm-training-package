@@ -78,7 +78,7 @@
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; transform: translate3d(-5px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
 
-                                            <a  href="#"  style="margin-bottom: 11px;"  class="dropdown-item">Approvals</a>
+                                            <a  href="{{ route('module-approval.show',[$item->id]) }}?module={{ base64_encode(\App\Models\TrainingV2::class) }}"  style="margin-bottom: 11px;"  class="dropdown-item">Approvals</a>
 
                                             <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="dropdown-item" data-backdrop="false">Modify</a>
 
