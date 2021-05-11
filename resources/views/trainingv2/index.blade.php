@@ -82,7 +82,7 @@
 
                                             <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="dropdown-item" data-backdrop="false">Modify</a>
 
-                                            <form method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('training-budgetv2.destroy',$item->id) }}">
+                                            <form method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('trainingv2.destroy',$item->id) }}">
 
                                                 @csrf
                                                 @method('DELETE')
