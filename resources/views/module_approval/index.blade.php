@@ -57,32 +57,13 @@
                                     {{ $item->stage->name }} @ Position - {{ $item->stage->position }}
                                 </td>
                                 <td>
-                                    {{ $item->approver->name }}
+                                    {{ $item->approver->blank? $item->approver->blank_name : $item->approver->name }}
                                 </td>
 
                                 <td>
-                                    <div class="dropdown show">
-                                        <button class="btn btn-success dropdown-toggle btn-sm pull-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Action
-                                        </button>
 
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; transform: translate3d(-5px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                    <a href="#" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-primary">Approve</a>
 
-
-                                            <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="dropdown-item" data-backdrop="false">Modify</a>
-
-                                            <form method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('training-budgetv2.destroy',$item->id) }}">
-
-                                                @csrf
-                                                @method('DELETE')
-
-                                                <button type="submit" class="dropdown-item btn btn-danger btn-sm" data-backdrop="false"  data-toggle="modal" data-target="#approveReject" >Remove</button>
-
-                                            </form>
-
-
-                                        </div>
-                                    </div>
                                 </td>
                             </tr>
 

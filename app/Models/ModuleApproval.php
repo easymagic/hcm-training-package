@@ -233,7 +233,8 @@ class ModuleApproval extends Model
     public function approver()
     {
         return $this->belongsTo('App\User','approver_id')->withDefault([
-            'name'=>'N/A'
+            'blank_name'=>'N/A',
+            'blank'=>true
         ]);
     }
     public function stage()
