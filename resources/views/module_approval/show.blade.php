@@ -55,14 +55,20 @@
                     </div>
 
                     <input type="hidden" name="approver_id" value="{{ Auth::user()->id }}" />
+                    <input type="hidden" name="module" value="{{ $item->module }}" />
+                    <input type="hidden" name="module_id" value="{{ $item->module_id }}" />
 
 
                 </div>
                 <div class="modal-footer">
 
+                    @if ($item->status == 0)
+
                     <button type="submit" class="btn btn-primary pull-left">
                         {{ __('Submit') }}
                     </button>
+
+                    @endif
 
 
 

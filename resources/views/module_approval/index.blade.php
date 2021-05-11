@@ -31,7 +31,7 @@
 
 
                     <div class="col-md-12" align="right">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Training Budget</button>
+{{--                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Training Budget</button>--}}
                     </div>
 
                     <table class="table table-striped">

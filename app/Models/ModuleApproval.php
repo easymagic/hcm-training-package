@@ -62,7 +62,7 @@ class ModuleApproval extends Model
     }
 
     static function nextStage($id){
-        $approval = self::getById($id)->first();
+        $approval = self::getById($id);
         $stage = $approval->stage;
         if ($stage){
             $workFlowId  = $stage->workflow->id;
@@ -73,8 +73,16 @@ class ModuleApproval extends Model
         return $stage;
     }
 
+    static function alreadyHasNextStage($approval,$stage){
+        $module =  $approval->module;
+        $module_id = $approval->module_id;
+        $query = ModuleApproval::query()->where('module',$module)->where('module_id',$module_id)
+        ->where('stage_id',$stage->id);
+        return $query;
+    }
+
     static function approve($id){
-        $record = self::getById($id)->first();
+        $record = self::getById($id);
 
         $module = $record->getByModule();
 
@@ -84,16 +92,26 @@ class ModuleApproval extends Model
             'approver_id'=>Auth::user()->id
         ]);
 
+//        dd($record);
+
         $nextStage = self::nextStage($id);
 
-        if ($nextStage){
+//        dd($nextStage);
+
+
+
+        if ($nextStage && !self::alreadyHasNextStage($record,$nextStage)->exists()){
+
+//            dd($nextStage->id,$record->stage_id,$nextStage,$record);
+
+//            dd('called...');
 
             $newApproval = self::createApproval([
                 'module_id'=>request('module_id'),
                 'module'=>request('module'),
                 'stage_id'=>$nextStage->id,
                 'status'=>0, //$data['status'],
-//            'approver_id'=>$data['approver_id'],
+//                'approver_id'=>request('approver_id'),
                 'comments'=>request('comments')
             ]);
 
