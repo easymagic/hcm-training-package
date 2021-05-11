@@ -675,3 +675,4 @@ Route::get('/hmo/deleteUserHMO/{userId}', 'AARHMO@deleteUserHMO')->name('deleteU
 Route::resource('trainingv2', 'TrainingV2Controller')->middleware(['auth']);
 Route::resource('training-budgetv2', 'TrainingBudgetV2Controller')->middleware(['auth']);
 Route::resource('training-userv2', 'TrainingUserV2Controller')->middleware(['auth']);
+Route::resource('module-approval', 'ModuleApprovalController')->middleware(['auth']);

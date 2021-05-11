@@ -1,5 +1,5 @@
 <!-- Modal -->
-<form method="POST" action="{{ route('training-budgetv2.store') }}">
+<form method="POST" action="{{ route('trainingv2.store') }}">
 <div id="create" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -58,7 +58,7 @@
                     <label class="col-sm-12 col-form-label text-md-left">{{ __('Is - Free?') }}</label>
 
                     <div class="col-md-12">
-                        <input  type="checkbox"  class="form-control" name="is_free" value="1" >
+                        <input  type="checkbox"   name="is_free" value="1" >
                     </div>
                 </div>
 
@@ -127,20 +127,7 @@
                 </div>
 
 
-
-
-                <div class="form-group row">
-
-                    <label class="col-sm-12 col-form-label text-md-left">{{ __('Amount') }}</label>
-
-                    <div class="col-md-12">
-
-                        <input id="email" type="text" class="form-control" name="amount" value="" autofocus>
-
-                    </div>
-                </div>
-
-
+                <input type="hidden" name="created_by" value="{{ Auth::user()->id }}" />
 
 
 
