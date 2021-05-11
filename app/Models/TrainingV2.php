@@ -70,6 +70,13 @@ class TrainingV2 extends Model
 
       $obj = $obj->create($data);
 
+      ModuleApproval::firstTimeCreate([
+       'stage_id'=>ModuleApproval::getFirstStageForWorkflow($workFlowName)->first()->id,
+       'module'=>self::class,
+       'module_id'=>$obj->id,
+       'comments'=>'...'
+      ]);
+
       return response()->json([
           'message'=>'New Training request sent',
           'error'=>false

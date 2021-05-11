@@ -6,6 +6,7 @@ use App\Notifications\ApproveLeaveRequest;
 use App\Notifications\LeaveRequestApproved;
 use App\Stage;
 use App\Workflow;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,12 @@ class ModuleApproval extends Model
     static function fetchByModule($module_id,$module){
         $records = self::query()->where('module_id',$module_id)->where('module',$module);
         return $records;
+    }
+
+    static function getFirstStageForWorkflow($name){
+        return Stage::query()->whereHas('workflow',function(Builder $builder) use ($name){
+            return $builder->where('name',$name);
+        })->where('position',1)->first();
     }
 
     function getByModule(){
