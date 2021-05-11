@@ -12,6 +12,11 @@
     border-bottom: 3px solid #000000;
     margin-bottom: 17px;
     font-size: 18px;
+    padding: 14px;
+    font-size: 21px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000;
 ">
                         Approval For {{ $module->getNarration() }}
                     </div>
@@ -34,10 +39,10 @@
                     <table class="table table-striped">
                         <tr>
                             <th>
-                                Year
+                                Stage
                             </th>
                             <th>
-                                Amount
+                                Approved By
                             </th>
                             <th>
                                 Actions
@@ -49,10 +54,10 @@
                             <tr>
 
                                 <td>
-                                    {{ $item->year }}
+                                    {{ $item->stage->name }} @ Position - {{ $item->stage->position }}
                                 </td>
                                 <td>
-                                    {{ $item->amount }}
+                                    {{ $item->approver->name }}
                                 </td>
 
                                 <td>

@@ -43,7 +43,7 @@ class ModuleApproval extends Model
 
     function getNarration(){
         $obj = $this->getModuleObject();
-        dd($obj);
+//        dd($obj);
         if (method_exists($obj,'getNarration')){
             return  $obj->getNarration();
         }
@@ -232,7 +232,9 @@ class ModuleApproval extends Model
 
     public function approver()
     {
-        return $this->belongsTo('App\User','approver_id');
+        return $this->belongsTo('App\User','approver_id')->withDefault([
+            'name'=>'N/A'
+        ]);
     }
     public function stage()
     {

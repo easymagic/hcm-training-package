@@ -136,7 +136,7 @@ class TrainingV2 extends Model
 
 
     function getNarration(){
-        return $this->id;
+        return $this->name . '(' . $this->start_date . ' - ' . $this->stop_date .  ')';
     }
 
 
