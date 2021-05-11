@@ -1,6 +1,6 @@
 <!-- Modal -->
-<form method="POST" action="{{ route('training-budgetv2.update',[$item->id]) }}">
-    <div id="edit{{ $item->id }}" class="modal fade" role="dialog">
+<form method="POST" action="{{ route('module-approval.update',[$item->id]) }}">
+    <div id="show{{ $item->id }}" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
         {{--        modal-lg--}}
@@ -9,7 +9,7 @@
             <div class="modal-content">
                 <div class="modal-header">
 
-                    Update Training Budget
+                    Approve Stage
 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
@@ -26,26 +26,49 @@
                         <label class="col-sm-12 col-form-label text-md-left">{{ __('Year') }}</label>
 
                         <div class="col-md-12">
-                            <input id="email" type="text" class="form-control" name="year" value="{{ $item->year }}" autofocus>
+
+                            <input id="email" type="text" class="form-control" name="year" value="{{ $item->year }}" autofocus />
 
                         </div>
+
                     </div>
 
 
                     <div class="form-group row">
 
-                        <label class="col-sm-12 col-form-label text-md-left">{{ __('Amount') }}</label>
+                        <label class="col-sm-12 col-form-label text-md-left">{{ __('Action') }}</label>
 
                         <div class="col-md-12">
 
-                            <input id="email" type="text" class="form-control" name="amount" value="{{ $item->amount }}" autofocus>
+                            <select name="action" class="form-control" id="">
+
+                                <option value="">--Select Action--</option>
+                                <option value="approve">Approve</option>
+                                <option value="reject">Reject</option>
+
+                            </select>
+
 
                         </div>
                     </div>
 
 
 
+                    <div class="form-group row">
 
+                        <label class="col-sm-12 col-form-label text-md-left">{{ __('Comments') }}</label>
+
+                        <div class="col-md-12">
+
+                            <textarea name="comments" id="" cols="30" rows="10">{{ $item->comments }}</textarea>
+
+
+                        </div>
+
+                    </div>
+
+                    <input type="hidden" name="approver_id" value="{{ Auth::user()->id }}" />
+                    
 
                 </div>
                 <div class="modal-footer">

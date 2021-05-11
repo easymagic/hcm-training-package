@@ -21,13 +21,11 @@
                         Approval For {{ $module->getNarration() }}
                     </div>
 
-                    @include('training-budgetv2.create')
+{{--                    @include('training-budgetv2.create')--}}
 
                     @foreach ($list as $item)
 
-
-                        @include('training-budgetv2.edit')
-
+                        @include('module_approval.show')
 
                     @endforeach
 
@@ -62,7 +60,7 @@
 
                                 <td>
 
-                                    <a href="#" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-primary">Approve</a>
+                                    <a href="#" data-toggle="modal" style="margin-bottom: 11px;" data-target="#show{{ $item->id }}" class="btn btn-sm btn-primary">Approve</a>
 
                                 </td>
                             </tr>

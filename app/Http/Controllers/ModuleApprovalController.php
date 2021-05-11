@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\ModuleApproval;
+use App\Traits\ResponseTraitV2;
 use Illuminate\Http\Request;
 
 class ModuleApprovalController extends Controller
 {
+
+    use ResponseTraitV2;
 
     private $data = [];
     /**
@@ -76,9 +79,23 @@ class ModuleApprovalController extends Controller
      * @param  \App\Models\ModuleApproval  $moduleApproval
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ModuleApproval $moduleApproval)
+    public function update(Request $request, $id)
     {
-        //
+
+        $action = \request('action');
+
+        if ($action == 'approve'){
+
+            return $this->resolveResponse(ModuleApproval::approve($id));
+
+        }
+
+        if ($action == 'reject'){
+
+            return $this->resolveResponse(ModuleApproval::reject($id));
+
+        }
+
     }
 
     /**
