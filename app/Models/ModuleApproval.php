@@ -112,7 +112,7 @@ class ModuleApproval extends Model
                 'stage_id'=>$nextStage->id,
                 'status'=>0, //$data['status'],
 //                'approver_id'=>request('approver_id'),
-                'comments'=>request('comments')
+                'comments'=>'...'
             ]);
 
             if (method_exists($module,'notifyApproved')){
