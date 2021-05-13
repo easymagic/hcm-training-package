@@ -145,6 +145,7 @@ class TrainingV2 extends Model
 
     function notifyRejected($users)
     {
+        dd('Rejected',$users);
         // TODO: Implement notifyRejected() method.
     }
 
