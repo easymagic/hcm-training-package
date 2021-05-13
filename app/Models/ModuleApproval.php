@@ -84,7 +84,7 @@ class ModuleApproval extends Model
     static function approve($id){
         $record = self::getById($id);
 
-        $module = $record->getByModule();
+        $module = $record->getModuleObject()->first();
 
         $record->update([
             'status'=>1,
@@ -141,7 +141,7 @@ class ModuleApproval extends Model
     static function reject($id){
         $record = self::getById($id);
 
-        $module = $record->getByModule();
+        $module = $record->getModuleObject()->first();
 
         $record->update([
             'status'=>2,
@@ -149,13 +149,15 @@ class ModuleApproval extends Model
             'approver_id'=>Auth::user()->id
         ]);
 
+//        dd($module,method_exists($module,'notifyRejected'));
+
         if (method_exists($module,'notifyRejected')){
             $module->notifyRejected([$module->user]);
         }
 
         return response()->json([
             'message'=>'Request rejected',
-            'error'=>false
+            'error'=>true
         ]);
 
     }

@@ -12,5 +12,6 @@ trait WorkFlowableTrait
     abstract function notifyApproved($users);
     abstract function getPreviewLink();
     abstract function getNarration();
+    abstract function user();
 
 }

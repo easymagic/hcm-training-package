@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\WorkFlowableTrait;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class TrainingV2 extends Model
@@ -145,7 +146,7 @@ class TrainingV2 extends Model
 
     function notifyRejected($users)
     {
-        dd('Rejected',$users);
+//        dd('Rejected',$users);
         // TODO: Implement notifyRejected() method.
     }
 
@@ -162,5 +163,10 @@ class TrainingV2 extends Model
     function getPreviewLink()
     {
         // TODO: Implement getPreviewLink() method.
+    }
+
+    function user()
+    {
+        return $this->belongsTo(User::class,'created_by');
     }
 }
