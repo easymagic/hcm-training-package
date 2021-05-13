@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\WorkFlowableTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class TrainingV2 extends Model
 {
+
+    use WorkFlowableTrait;
     //
 
     protected $fillable = ['name','year','cost','is_free','type','resource_link','approved','start_date','stop_date',
@@ -140,6 +143,23 @@ class TrainingV2 extends Model
     }
 
 
+    function notifyRejected($users)
+    {
+        // TODO: Implement notifyRejected() method.
+    }
 
+    function notifyFinalApproved($users)
+    {
+        // TODO: Implement notifyFinalApproved() method.
+    }
 
+    function notifyApproved($users)
+    {
+        // TODO: Implement notifyApproved() method.
+    }
+
+    function getPreviewLink()
+    {
+        // TODO: Implement getPreviewLink() method.
+    }
 }

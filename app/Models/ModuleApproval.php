@@ -139,7 +139,7 @@ class ModuleApproval extends Model
 
 
     static function reject($id){
-        $record = self::getById($id)->first();
+        $record = self::getById($id);
 
         $module = $record->getByModule();
 
