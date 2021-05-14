@@ -1,0 +1,42 @@
+public function up()
+    {
+        Schema::create('interviews', function (Blueprint $table) {
+            $table->id();
+
+            $table->integer('job_role_id')->nullable();
+            $table->string('name')->nullable();
+            $table->integer('interviewer')->nullable();
+
+            $table->timestamps();
+        });
+    }
+
+
+
+     public function up()
+        {
+            Schema::create('interview_assessments', function (Blueprint $table) {
+                $table->id();
+
+                $table->integer('interview_id')->nullable();
+                $table->string('competency')->nullable();
+                $table->string('max_rating')->nullable();
+
+                $table->timestamps();
+            });
+        }
+
+
+
+        public function up()
+            {
+                Schema::create('interview_assessment_candidates', function (Blueprint $table) {
+                    $table->id();
+
+                    $table->integer('interview_assessment_id')->nullable();
+                    $table->string('score')->nullable();
+                    $table->string('candidate')->nullable();
+
+                    $table->timestamps();
+                });
+            }
