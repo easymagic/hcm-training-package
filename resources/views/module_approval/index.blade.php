@@ -43,7 +43,7 @@
                                 Approved By
                             </th>
                             <th>
-                                Actions
+                                Actions/Status
                             </th>
                         </tr>
                         @foreach ($list as $item)
@@ -60,7 +60,17 @@
 
                                 <td>
 
-                                    <a href="#" data-toggle="modal" style="margin-bottom: 11px;" data-target="#show{{ $item->id }}" class="btn btn-sm btn-primary">Approve</a>
+                                    @if ($item->status == 0)
+                                        <a href="#" data-toggle="modal" style="margin-bottom: 11px;" data-target="#show{{ $item->id }}" class="btn btn-sm btn-primary">Approve</a>
+                                    @endif
+
+                                    @if ($item->status == 1)
+                                            <a href="#" data-toggle="modal" style="margin-bottom: 11px;" data-target="#show{{ $item->id }}" class="btn btn-sm btn-success">Passed</a>
+                                    @endif
+
+                                    @if ($item->status == 2)
+                                            <a href="#" data-toggle="modal" style="margin-bottom: 11px;" data-target="#show{{ $item->id }}" class="btn btn-sm btn-danger">Cancelled</a>
+                                    @endif
 
                                 </td>
                             </tr>

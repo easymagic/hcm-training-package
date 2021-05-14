@@ -112,7 +112,8 @@ class TrainingV2 extends Model
     }
 
 
-    static function approve($id){
+    function approve(){
+        $id = $this->id;
         $obj = self::query()->find($id);
         $obj->update([
             'approved'=>1
@@ -125,7 +126,8 @@ class TrainingV2 extends Model
 
     }
 
-    static function unApprove($id){
+    function unApprove(){
+        $id = $this->id;
         $obj = self::query()->find($id);
         $obj->update([
             'approved'=>2
@@ -146,12 +148,14 @@ class TrainingV2 extends Model
 
     function notifyRejected($users)
     {
+        $this->unApprove();
 //        dd('Rejected',$users);
         // TODO: Implement notifyRejected() method.
     }
 
     function notifyFinalApproved($users)
     {
+        $this->approve();
         // TODO: Implement notifyFinalApproved() method.
     }
 
