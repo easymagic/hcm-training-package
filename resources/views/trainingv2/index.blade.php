@@ -81,9 +81,9 @@
 
                                     <a  target="_blank" href="{{ route('module-approval.show',[$item->id]) }}?module={{ base64_encode(\App\Models\TrainingV2::class) }}"  style="margin-bottom: 11px;"  class="btn btn-sm btn-success">Approvals</a>
 
-                                    <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-warning" data-backdrop="false">Modify</a>
+                                    <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-warning">Modify</a>
 
-                                    <form style="display: inline-block;position: relative;top: -6px;" method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('trainingv2.destroy',$item->id) }}">
+                                    <form style="display: inline-block;position: relative;top: -6px;" method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('trainingv2.destroy',[$item->id]) }}">
 
                                         @csrf
                                         @method('DELETE')
