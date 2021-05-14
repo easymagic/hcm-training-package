@@ -72,7 +72,7 @@
                         <select name="type" class="form-control" id="">
                             <option value="">--Select---</option>
                             <option value="online">Online</option>
-                            <option value="phuysical">Physical</option>
+                            <option value="physical">Physical</option>
                         </select>
                     </div>
                 </div>
