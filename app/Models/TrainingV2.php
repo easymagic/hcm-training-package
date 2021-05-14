@@ -30,6 +30,20 @@ class TrainingV2 extends Model
 
     }
 
+    function getApprovedNameAttribute(){
+        if ($this->approved == 0){
+            return 'Pending';
+        }
+        if ($this->approved == 1){
+            return  'Approved';
+        }
+        return  'Cancelled';
+    }
+
+    function department(){
+
+    }
+
     static function getFactory(){
         return new self;
     }

@@ -84,7 +84,7 @@ class ModuleApproval extends Model
     static function approve($id){
         $record = self::getById($id);
 
-        $module = $record->getModuleObject()->first();
+        $module = $record->getModuleObject();
 
         $record->update([
             'status'=>1,
@@ -141,7 +141,7 @@ class ModuleApproval extends Model
     static function reject($id){
         $record = self::getById($id);
 
-        $module = $record->getModuleObject()->first();
+        $module = $record->getModuleObject();
 
         $record->update([
             'status'=>2,

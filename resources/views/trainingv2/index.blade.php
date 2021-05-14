@@ -46,6 +46,9 @@
                                 Cost
                             </th>
                             <th>
+                                Status
+                            </th>
+                            <th  style="text-align: right;">
                                 Actions
                             </th>
                         </tr>
@@ -69,31 +72,27 @@
                                 <td>
                                     {{ $item->cost }}
                                 </td>
-
                                 <td>
-                                    <div class="dropdown show">
-                                        <button class="btn btn-success dropdown-toggle btn-sm pull-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Action
-                                        </button>
+                                    {{ $item->approved_name }}
+                                </td>
 
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; transform: translate3d(-5px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-
-                                            <a  href="{{ route('module-approval.show',[$item->id]) }}?module={{ base64_encode(\App\Models\TrainingV2::class) }}"  style="margin-bottom: 11px;"  class="dropdown-item">Approvals</a>
-
-                                            <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="dropdown-item" data-backdrop="false">Modify</a>
-
-                                            <form method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('trainingv2.destroy',$item->id) }}">
-
-                                                @csrf
-                                                @method('DELETE')
-
-                                                <button type="submit" class="dropdown-item btn btn-danger btn-sm" data-backdrop="false"  data-toggle="modal" data-target="#approveReject" >Remove</button>
-
-                                            </form>
+                                <td align="right" style="text-align: right;">
 
 
-                                        </div>
-                                    </div>
+                                    <a  target="_blank" href="{{ route('module-approval.show',[$item->id]) }}?module={{ base64_encode(\App\Models\TrainingV2::class) }}"  style="margin-bottom: 11px;"  class="btn btn-sm btn-success">Approvals</a>
+
+                                    <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-warning" data-backdrop="false">Modify</a>
+
+                                    <form style="display: inline-block;position: relative;top: -6px;" method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('trainingv2.destroy',$item->id) }}">
+
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-danger btn-sm" data-backdrop="false"  data-toggle="modal" data-target="#approveReject" >Remove</button>
+
+                                    </form>
+
+
                                 </td>
                             </tr>
 
