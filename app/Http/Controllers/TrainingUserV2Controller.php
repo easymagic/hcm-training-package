@@ -64,6 +64,7 @@ class TrainingUserV2Controller extends Controller
     public function store(Request $request)
     {
         //
+        return $this->resolveResponse(TrainingUserV2::store());
     }
 
     /**
@@ -95,9 +96,10 @@ class TrainingUserV2Controller extends Controller
      * @param  \App\Models\TrainingUserV2  $trainingUserV2
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TrainingUserV2 $trainingUserV2)
+    public function update(Request $request, $id)
     {
         //
+        return $this->resolveResponse(TrainingUserV2::updateRecord($id));
     }
 
     /**
@@ -106,8 +108,11 @@ class TrainingUserV2Controller extends Controller
      * @param  \App\Models\TrainingUserV2  $trainingUserV2
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TrainingUserV2 $trainingUserV2)
+    public function destroy($id)
     {
         //
+        return $this->resolveResponse(TrainingUserV2::deleteRecord($id));
+
     }
+    
 }
