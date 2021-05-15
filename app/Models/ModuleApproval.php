@@ -15,6 +15,7 @@ class ModuleApproval extends Model
     //
 
     protected $fillable = ['module_id','module','stage_id','status','approver_id','comments'];
+    
 
     static function fetchByModule($module_id,$module){
         $records = self::query()->where('module_id',$module_id)->where('module',$module);
@@ -26,6 +27,8 @@ class ModuleApproval extends Model
             return $builder->where('name',$name);
         })->where('position',0);
     }
+
+    function setModuleApprovalInterface(){}
 
     function getByModule(){
         $id = $this->module_id;
