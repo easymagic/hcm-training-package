@@ -15,7 +15,7 @@ class ModuleApproval extends Model
     //
 
     protected $fillable = ['module_id','module','stage_id','status','approver_id','comments'];
-    
+
 
     static function fetchByModule($module_id,$module){
         $records = self::query()->where('module_id',$module_id)->where('module',$module);
@@ -180,19 +180,19 @@ class ModuleApproval extends Model
 
             if ($stage->role->manages == 'dr') {
 
-                foreach ($approval->getByModule()->user->managers as $manager) {
+                foreach ($approval->getModuleObject()->user->managers as $manager) {
                     $list[] = $manager;
                 }
 
             }elseif ($stage->role->manages == 'ss') {
 
-                $ss = $approval->getByModule()->user->plmanager->managers;
+                $ss = $approval->getModuleObject()->user->plmanager->managers;
 
 //                if (!$ss) {
 //                    $list[] = $approval->getByModule()->user;
 //                }
 
-                foreach ($approval->getByModule()->user->plmanager->managers as $manager) {
+                foreach ($approval->getModuleObject()->user->plmanager->managers as $manager) {
                     $list[] = $manager;
                 }
 

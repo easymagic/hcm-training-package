@@ -7,7 +7,7 @@ namespace App\Interfaces;
 interface ModuleApprovalInterface
 {
 
-    function getSubscribers();
+//    function getSubscribers();
     function notifyRejected($users);
     function notifyFinalApproved($users);
     function notifyApproved($users);

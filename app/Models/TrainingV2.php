@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
+use App\Interfaces\ModuleApprovalInterface;
 use App\Traits\WorkFlowableTrait;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class TrainingV2 extends Model
+class TrainingV2 extends Model implements ModuleApprovalInterface
 {
 
-    use WorkFlowableTrait;
+//    use WorkFlowableTrait;
     //
 
     protected $fillable = ['name','year','cost','is_free','type','resource_link','approved','start_date','stop_date',
@@ -186,5 +187,10 @@ class TrainingV2 extends Model
     function user()
     {
         return $this->belongsTo(User::class,'created_by');
+    }
+
+    function getSubscribers()
+    {
+        // TODO: Implement getSubscribers() method.
     }
 }
