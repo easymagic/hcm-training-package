@@ -13,37 +13,37 @@
     margin-bottom: 17px;
     font-size: 18px;
 ">
-                        Workflows
+                        Recommend Training
                     </div>
 
-                    @include('workflow.create')
+{{--                    @include('workflow.create')--}}
 
-                    @foreach ($workflows as $item)
+                    @foreach ($list as $item)
 
 
-                        @include('workflow.edit')
+                        @include('training-userv2.edit')
 
 
                     @endforeach
 
 
                     <div class="col-md-12" align="right">
-                        <a style="margin-bottom: 11px;" href="{{ route('workflow-stages.index') }}" class="btn btn-sm btn-info">
-                            Workflow-Stages
-                        </a>
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Workflow</button>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Recommend Training</button>
                     </div>
 
                     <table class="table table-striped">
                         <tr>
                             <th>
-                                Workflow-Name
+                                Training
+                            </th>
+                            <th>
+                                Candidates
                             </th>
                             <th>
                                 Actions
                             </th>
                         </tr>
-                        @foreach ($workflows as $item)
+                        @foreach ($list as $item)
 
 
                             <tr>
