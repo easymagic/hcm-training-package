@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\TrainingUserV2;
 use App\Models\TrainingV2;
+use App\Services\TrainingUserV2Service;
+use App\Services\TrainingV2Service;
 use App\Traits\ResponseTraitV2;
 use App\User;
 use Illuminate\Http\Request;
@@ -15,14 +17,10 @@ class TrainingUserV2Controller extends Controller
 
     private $data = [];
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
 
     function loadTraining(){
-        $this->data['trainings'] = TrainingV2::query()->where('approved',1)->get();
+        $this->data['trainings'] = TrainingV2Service::fetchApproved()->get(); // query()->where('approved',1)->get();
     }
 
     function loadUsers(){
@@ -30,7 +28,7 @@ class TrainingUserV2Controller extends Controller
     }
 
     function loadTrainingUsers(){
-       $this->data['list'] = TrainingUserV2::query()->get();
+       $this->data['list'] = TrainingUserV2Service::fetch()->get(); // ::query()->get();
     }
 
 
@@ -45,69 +43,39 @@ class TrainingUserV2Controller extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
         return $this->resolveResponse(TrainingUserV2::store());
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TrainingUserV2  $trainingUserV2
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(TrainingUserV2 $trainingUserV2)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\TrainingUserV2  $trainingUserV2
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(TrainingUserV2 $trainingUserV2)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TrainingUserV2  $trainingUserV2
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
         return $this->resolveResponse(TrainingUserV2::updateRecord($id));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\TrainingUserV2  $trainingUserV2
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //

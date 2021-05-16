@@ -1,8 +1,8 @@
-@extends('layouts.main')
+@extends('layouts.master')
 
 @section('content')
 
-    <div class="col-lg-10 post-list" style="@yield('main-center-style','margin-left: 1%;');">
+    <div class="col-lg-12 post-list" style="margin-top: 21px;">
 
         <div class="container">
             <div class="row justify-content-center">
@@ -16,7 +16,7 @@
                         Recommend Training
                     </div>
 
-{{--                    @include('workflow.create')--}}
+                    @include('training-userv2.create')
 
                     @foreach ($list as $item)
 
@@ -93,5 +93,28 @@
 
     </div>
 
+    <div style="clear: both;">&nbsp;</div>
+
+
+@endsection
+
+
+@section('scripts')
+
+    <script>
+        // alert(1);
+        (function($){
+            $(function(){
+
+                $('#user_ids').select2();
+
+            });
+        })(jQuery);
+
+
+        //
+
+
+    </script>
 
 @endsection

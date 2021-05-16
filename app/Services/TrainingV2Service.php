@@ -9,6 +9,9 @@ use App\Models\TrainingV2;
 
 class TrainingV2Service
 {
+    static function fetchApproved(){
+        return TrainingV2::query()->where('approved',1);
+    }
 
     static function getById($id){
         return TrainingV2::query()->find($id);
