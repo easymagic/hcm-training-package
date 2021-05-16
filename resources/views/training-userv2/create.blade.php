@@ -1,5 +1,5 @@
 <!-- Modal -->
-<form method="POST" action="">
+<form method="POST" action="{{ route('training-userv2.store') }}">
 <div id="create" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -40,16 +40,16 @@
                     <label class="col-sm-12 col-form-label text-md-left">{{ __('Select Users') }}</label>
 
                     <div class="col-md-12">
-                        <select name="user_ids" id="user_ids" class="form-control" multiple>
+                        <select name="user_ids[]" id="user_ids" class="form-control" style="width: 100%;" multiple>
                             <option value="">--Select--</option>
                             @foreach ($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                <option  value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
 
-                users
+
 
 
 
@@ -58,7 +58,7 @@
             <div class="modal-footer">
 
                 <button type="submit" class="btn btn-primary pull-left">
-                    {{ __('Submit') }}
+                    {{ __('Send Invitation') }}
                 </button>
 
 

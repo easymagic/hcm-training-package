@@ -40,7 +40,7 @@ class TrainingV2Service
             'name'=>'required',
             'year'=>'required',
             'cost'=>'required',
-            'is_free'=>'required',
+//            'is_free'=>'required',
             'type'=>'required', //online or physical
             'resource_link'=>'required',
             'start_date'=>'required',
@@ -74,6 +74,10 @@ class TrainingV2Service
         $data['workflow_id'] = $workFlow->id;
 
         $obj = self::getFactory();
+
+        if (request()->filled('is_free')){
+            $data['is_free'] = request('is_free');
+        }
 
         $obj = $obj->create($data);
 

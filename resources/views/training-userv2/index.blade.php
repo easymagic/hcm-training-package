@@ -40,6 +40,9 @@
                                 Candidates
                             </th>
                             <th>
+                                Invitation Status
+                            </th>
+                            <th style="text-align: right;">
                                 Actions
                             </th>
                         </tr>
@@ -49,39 +52,37 @@
                             <tr>
 
                                 <td>
-                                    {{ $item->name }}
+                                    {{ $item->training->name }}
+                                </td>
+                                <td>
+                                    {{ $item->user->name }}
+                                </td>
+                                <td>
+                                    {{ $item->accepted_name }}
                                 </td>
 
-                                <td>
-                                    <div class="dropdown show">
-                                        <button class="btn btn-success dropdown-toggle btn-sm pull-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Action
-                                        </button>
+                                <td style="text-align: right;">
 
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; transform: translate3d(-5px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                    <a  type="button" data-toggle="modal" style="margin-bottom: 11px;color: #fff;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-primary">View Detail</a>
+
+                                    <form style="display: inline-block" method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('training-userv2.destroy',$item->id) }}">
+
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button style="position: relative;top: -6px;" type="submit" class=" btn btn-danger btn-sm" data-backdrop="false"  data-toggle="modal" data-target="#approveReject" >Remove</button>
+
+                                    </form>
 
 
-                                            <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="dropdown-item" data-backdrop="false">Modify</a>
 
-                                            <form method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('workflow.destroy',$item->id) }}">
-
-                                                @csrf
-                                                @method('DELETE')
-
-                                                <button type="submit" class="dropdown-item btn btn-danger btn-sm" data-backdrop="false"  data-toggle="modal" data-target="#approveReject" >Remove</button>
-
-                                            </form>
-
-                                            <a style="margin-bottom: 11px;" href="{{ route('workflow-stages.index') }}?workflow_id={{ $item->id }}" target="_blank" class="dropdown-item">Stages</a>
-
-                                        </div>
-                                    </div>
                                 </td>
                             </tr>
 
                         @endforeach
                     </table>
 
+                    {{ $list->links() }}
 
 
                 </div>
@@ -106,7 +107,10 @@
         (function($){
             $(function(){
 
-                $('#user_ids').select2();
+                setTimeout(()=>{
+                    $('#user_ids').select2();
+                },1000);
+
 
             });
         })(jQuery);
@@ -116,5 +120,7 @@
 
 
     </script>
+
+    @include('response-message')
 
 @endsection

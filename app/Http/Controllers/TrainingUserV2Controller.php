@@ -28,7 +28,7 @@ class TrainingUserV2Controller extends Controller
     }
 
     function loadTrainingUsers(){
-       $this->data['list'] = TrainingUserV2Service::fetch()->get(); // ::query()->get();
+       $this->data['list'] = TrainingUserV2Service::fetch()->paginate(20); // ::query()->get();
     }
 
 
@@ -53,7 +53,7 @@ class TrainingUserV2Controller extends Controller
     public function store(Request $request)
     {
         //
-        return $this->resolveResponse(TrainingUserV2::store());
+        return $this->resolveResponse(TrainingUserV2Service::store());
     }
 
 
@@ -72,14 +72,14 @@ class TrainingUserV2Controller extends Controller
     public function update(Request $request, $id)
     {
         //
-        return $this->resolveResponse(TrainingUserV2::updateRecord($id));
+        return $this->resolveResponse(TrainingUserV2Service::updateRecord($id));
     }
 
 
     public function destroy($id)
     {
         //
-        return $this->resolveResponse(TrainingUserV2::deleteRecord($id));
+        return $this->resolveResponse(TrainingUserV2Service::deleteRecord($id));
 
     }
 
