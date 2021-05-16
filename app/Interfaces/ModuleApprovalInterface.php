@@ -14,6 +14,7 @@ interface ModuleApprovalInterface
     function getPreviewLink();
     function getNarration();
     function user();
+//    function getModuleObject();
 
 
 }

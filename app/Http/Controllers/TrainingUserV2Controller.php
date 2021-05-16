@@ -114,5 +114,5 @@ class TrainingUserV2Controller extends Controller
         return $this->resolveResponse(TrainingUserV2::deleteRecord($id));
 
     }
-    
+
 }
