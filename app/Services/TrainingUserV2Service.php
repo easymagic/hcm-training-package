@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Models\TrainingUserV2;
 use http\Env\Response;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
 class TrainingUserV2Service
@@ -17,8 +18,10 @@ class TrainingUserV2Service
 
   static function fetch(){
       $query = TrainingUserV2::query();
-      if (request()->filled('user_id')){
-          $query = $query->where('user_id',request('user_id'));
+      if (request()->filled('user')){
+          $query = $query->whereHas('user',function(Builder $builder){
+              return $builder->where('email','like','%' . request('user') . '%');
+          });
       }
       return $query;
   }

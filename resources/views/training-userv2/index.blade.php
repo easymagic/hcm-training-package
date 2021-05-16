@@ -31,13 +31,24 @@
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Recommend Training</button>
                     </div>
 
+
+                    <div class="col-md-12" align="left" style="padding: 0;">
+
+                        <form action="?" method="get">
+                            <input type="text" name="user" placeholder="Search User By E-mail" style="margin-bottom: 11px;" />
+                        </form>
+                    </div>
+
                     <table class="table table-striped">
                         <tr>
                             <th>
                                 Training
                             </th>
                             <th>
-                                Candidates
+                                Candidate
+                            </th>
+                            <th>
+                                E-mail
                             </th>
                             <th>
                                 Invitation Status
@@ -56,6 +67,9 @@
                                 </td>
                                 <td>
                                     {{ $item->user->name }}
+                                </td>
+                                <td>
+                                    {{ $item->user->email }}
                                 </td>
                                 <td>
                                     {{ $item->accepted_name }}
