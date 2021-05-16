@@ -9,7 +9,7 @@ use App\Stage;
 use App\Workflow;
 use Illuminate\Support\Facades\Auth;
 
-class TrainingV2Service
+class ModuleApprovalV2Service
 {
 
 

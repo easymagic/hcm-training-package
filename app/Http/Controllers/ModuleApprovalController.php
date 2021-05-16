@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ModuleApproval;
+use App\Services\ModuleApprovalV2Service;
 use App\Traits\ResponseTraitV2;
 use Illuminate\Http\Request;
 
@@ -86,7 +87,9 @@ class ModuleApprovalController extends Controller
 
         if ($action == 'approve'){
 
-            return $this->resolveResponse(ModuleApproval::approve($id));
+            return  $this->resolveResponse(ModuleApprovalV2Service::approve($id));
+
+//            return $this->resolveResponse(ModuleApproval::approve($id));
 
         }
 
