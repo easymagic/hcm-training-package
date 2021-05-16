@@ -16,7 +16,11 @@ class TrainingUserV2Service
   }
 
   static function fetch(){
-      return TrainingUserV2::query();
+      $query = TrainingUserV2::query();
+      if (request()->filled('user_id')){
+          $query = $query->where('user_id',request('user_id'));
+      }
+      return $query;
   }
 
 
