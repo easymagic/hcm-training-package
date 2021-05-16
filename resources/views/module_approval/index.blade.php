@@ -52,7 +52,7 @@
                             <tr>
 
                                 <td>
-                                    {{ $item->stage->name }} @ Position - {{ $item->stage->position }}
+                                    {{ $item->stage->name }} @ Position - {{ $item->stage->position + 1 }}
                                 </td>
                                 <td>
                                     {{ $item->approver->blank? $item->approver->blank_name : $item->approver->name }}

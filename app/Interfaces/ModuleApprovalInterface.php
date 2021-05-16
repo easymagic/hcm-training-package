@@ -8,12 +8,12 @@ interface ModuleApprovalInterface
 {
 
 //    function getSubscribers();
-    function notifyRejected($users);
-    function notifyFinalApproved($users);
-    function notifyApproved($users);
+    function notifyRejected($id,$users);
+    function notifyFinalApproved($id,$users);
+    function notifyApproved($id,$users);
     function getPreviewLink();
     function getNarration();
-    function user();
+//    function user();
 //    function getModuleObject();
 
 

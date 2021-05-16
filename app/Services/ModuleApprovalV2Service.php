@@ -4,20 +4,40 @@
 namespace App\Services;
 
 
+use App\Interfaces\ModuleApprovalInterface;
 use App\Models\ModuleApproval;
 use App\Stage;
 use App\Workflow;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
 class ModuleApprovalV2Service
 {
 
+    private static $listener = null;
+
+    static function setListener(ModuleApprovalInterface  $moduleApprovalInterface){
+        self::$listener = $moduleApprovalInterface;
+    }
+
 
     static function getModuleObject($id){
-        $mod = ModuleApproval::query()->find('id');
+        $mod = ModuleApproval::query()->find($id);
+        $module_id = $mod->module_id;
+        $cls = $mod->module;
+//        dd($cls);
+        return $cls::query()->find($module_id);
+    }
+
+    static function getModuleObjectByModule($id,$module){
+        $mod = ModuleApproval::query()->where('module_id',$id)->where('module',$module)->first();
         $module_id = $mod->module_id;
         $cls = $mod->module;
         return $cls::query()->find($module_id);
+    }
+
+    static function fetchApprovalsByModule($id,$module){
+        return ModuleApproval::query()->where('module_id',$id)->where('module',$module)->get();
     }
 
     static function proxyCallMathod($obj,$method,$args=[]){
@@ -91,7 +111,9 @@ class ModuleApprovalV2Service
                 'comments'=>'...'
             ]);
 
-            self::proxyCallMathod($module,'notifyApproved',[self::getSubscribers($newApproval->id)]);
+
+
+            self::proxyCallMathod($module,'notifyApproved',[$module->id,self::getSubscribers($newApproval->id)]);
 
             return response()->json([
                 'message'=>'Request approved',
@@ -101,7 +123,7 @@ class ModuleApprovalV2Service
         }
 
 
-        self::proxyCallMathod($module,'notifyFinalApproved',[self::getSubscribers($record->id)]);
+        self::proxyCallMathod($module,'notifyFinalApproved',[$module->id,self::getSubscribers($record->id)]);
 
 
         return response()->json([
@@ -125,8 +147,10 @@ class ModuleApprovalV2Service
             'approver_id'=>Auth::user()->id
         ]);
 
+//        dd(self::$listener);
 
-        self::proxyCallMathod($module,'notifyRejected',[[$module->user]]);
+
+        self::proxyCallMathod($module,'notifyRejected',[$module->id,[$module->user]]);
 
 
         return response()->json([
@@ -199,7 +223,7 @@ class ModuleApprovalV2Service
         $obj = self::createApproval($data);
         $module = self::getModuleObject($obj->id);
 
-        self::proxyCallMathod($module,'notifyFirstTimeCreate',[self::getSubscribers($obj->id)]);
+        self::proxyCallMathod($module,'notifyFirstTimeCreate',[$module->id,self::getSubscribers($obj->id)]);
 
     }
 
@@ -222,6 +246,15 @@ class ModuleApprovalV2Service
 
         return $obj;
     }
+
+
+
+    static function getFirstStageForWorkflow($name){
+        return Stage::query()->whereHas('workflow',function(Builder $builder) use ($name){
+            return $builder->where('name',$name);
+        })->where('position',0);
+    }
+
 
 
 
