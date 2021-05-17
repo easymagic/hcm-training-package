@@ -27,7 +27,7 @@ class TrainingUserV2Service
           });
       }
       return $query;
-      
+
   }
 
   static function fetch(){
