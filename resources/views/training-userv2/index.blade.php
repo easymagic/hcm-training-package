@@ -27,7 +27,7 @@
                     @endforeach
 
 
-                    @usercan('recommend_training')
+                    @usercan(recommend_training)
                     <div class="col-md-12" align="right">
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Recommend Training</button>
                     </div>
@@ -82,7 +82,7 @@
                                     <a  type="button" data-toggle="modal" style="margin-bottom: 11px;color: #fff;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-primary">View Detail</a>
 
 
-                                    @usercan('recommend_training')
+                                    @usercan(recommend_training)
 
                                     <form style="display: inline-block" method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('training-userv2.destroy',$item->id) }}">
 

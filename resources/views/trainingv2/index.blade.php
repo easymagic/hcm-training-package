@@ -28,7 +28,9 @@
 
 
                     <div class="col-md-12" align="right">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Training</button>
+                        @usercan(create_training_plan)
+                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Training</button>
+                        @endusercan
                     </div>
 
                     <table class="table table-striped">
@@ -81,8 +83,13 @@
 
                                     <a  target="_blank" href="{{ route('module-approval.show',[$item->id]) }}?module={{ base64_encode(\App\Models\TrainingV2::class) }}"  style="margin-bottom: 11px;"  class="btn btn-sm btn-success">Approvals</a>
 
-                                    <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-warning">Modify</a>
 
+                                    @usercan(edit_training_plan)
+                                      <a  type="button" data-toggle="modal" style="margin-bottom: 11px;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-warning">Modify</a>
+                                    @endusercan
+
+
+                                    @usercan(create_training_plan)
                                     <form style="display: inline-block;position: relative;top: -6px;" method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('trainingv2.destroy',[$item->id]) }}">
 
                                         @csrf
@@ -91,6 +98,7 @@
                                         <button type="submit" class="btn btn-danger btn-sm" data-backdrop="false"  data-toggle="modal" data-target="#approveReject" >Remove</button>
 
                                     </form>
+                                    @endusercan
 
 
                                 </td>
