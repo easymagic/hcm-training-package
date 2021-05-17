@@ -105,8 +105,8 @@ class TrainingV2Service
 //        dd(request()->all());
 
         $created_by = Auth::user()->id;
-        
-        if ($created_by != $created_by){
+
+        if ($obj->created_by != $created_by){
 
             return response()->json([
                 'message'=>'Operation not allowed!',
@@ -131,6 +131,19 @@ class TrainingV2Service
 
     static function removeTraining($id){
         $obj = self::getById($id); // query()->find($id);
+
+        $created_by = Auth::user()->id;
+
+        if ($obj->created_by != $created_by){
+
+            return response()->json([
+                'message'=>'Operation not allowed!',
+                'error'=>true
+            ]);
+
+        }
+
+
         $obj->delete();
 
         return response()->json([
