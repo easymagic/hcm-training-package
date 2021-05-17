@@ -4,8 +4,10 @@
 namespace App\Services;
 
 
+use App\Department;
 use App\Models\ModuleApproval;
 use App\Models\TrainingV2;
+use Illuminate\Support\Facades\Auth;
 
 class TrainingV2Service
 {
@@ -19,15 +21,14 @@ class TrainingV2Service
 
     static function getDepartments(){
 
-        $dep1 = new \stdClass();
-        $dep1->name = 'IT Department';
-        $dep1->id = 1;
+        $query = Department::query()->where('company_id',companyId());
 
-        $dep2 = new \stdClass();
-        $dep2->name = 'Admin Department';
-        $dep2->id = 2;
+        if (!is_null(Auth::user()->department)){
+            $query = $query->where('id',Auth::user()->department->id);
+        }
 
-        return [ $dep1 , $dep2 ];
+
+        return $query->get();
 
     }
 
@@ -102,6 +103,17 @@ class TrainingV2Service
         $data = request()->validate(self::getValidation());
 
 //        dd(request()->all());
+
+        $created_by = Auth::user()->id;
+        
+        if ($created_by != $created_by){
+
+            return response()->json([
+                'message'=>'Operation not allowed!',
+                'error'=>true
+            ]);
+
+        }
 
         if (request()->filled('is_free')){
             $data['is_free'] = request('is_free');

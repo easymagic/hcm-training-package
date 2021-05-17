@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Department;
 use App\Interfaces\ModuleApprovalInterface;
 use App\Services\TrainingV2Service;
 use App\Traits\WorkFlowableTrait;
@@ -29,7 +30,7 @@ class TrainingV2 extends Model implements ModuleApprovalInterface
     }
 
     function department(){
-
+      return $this->belongsTo(Department::class,'department_id');
     }
 
     function getNarration(){
