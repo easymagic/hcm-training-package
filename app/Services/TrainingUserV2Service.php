@@ -18,12 +18,24 @@ class TrainingUserV2Service
 
   static function fetch(){
       $query = TrainingUserV2::query();
+      $recommended_by = Auth::user()->id;
+
+      $query = $query->where(function(Builder $builder) use ($recommended_by){
+
+          return $builder->where('recommended_by',$recommended_by)
+              ->orWhere('user_id',$recommended_by);
+
+      });
+
+
       if (request()->filled('user')){
           $query = $query->whereHas('user',function(Builder $builder){
               return $builder->where('email','like','%' . request('user') . '%');
           });
       }
+
       return $query;
+
   }
 
 
@@ -42,7 +54,8 @@ class TrainingUserV2Service
             $obj = new TrainingUserV2;
             $obj = $obj->create([
                 'training_id'=>$data['training_id'],
-                'user_id'=>$user_id
+                'user_id'=>$user_id,
+                'recommended_by'=>Auth::user()->id
             ]);
 
         }

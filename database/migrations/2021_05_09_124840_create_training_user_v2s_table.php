@@ -22,6 +22,7 @@ class CreateTrainingUserV2sTable extends Migration
             $table->string('feedback')->nullable();
             $table->string('document_upload')->nullable();
             $table->string('accepted')->nullable();
+            $table->integer('recommended_by')->nullable();
 
 
             $table->timestamps();

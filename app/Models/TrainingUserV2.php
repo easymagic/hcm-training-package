@@ -10,7 +10,7 @@ class TrainingUserV2 extends Model
 {
     //
 
-    protected $fillable = ['training_id','user_id','rating','feedback','document_upload','accepted'];
+    protected $fillable = ['training_id','user_id','rating','feedback','document_upload','accepted','recommended_by'];
 
 
     function training(){
@@ -19,6 +19,10 @@ class TrainingUserV2 extends Model
 
     function user(){
         return $this->belongsTo(User::class,'user_id');
+    }
+
+    function recommendation_by(){
+        return $this->belongsTo(User::class,'recommended_by');
     }
 
     function getAcceptedNameAttribute(){
