@@ -61,7 +61,8 @@ class TrainingUserV2Service
 
         $data = request()->validate([
             'feedback'=>'required',
-            'rating'=>'required'
+            'rating'=>'required',
+            'accepted'=>'required'
         ]);
 
         if ($user_id != $record->user_id){
@@ -73,11 +74,11 @@ class TrainingUserV2Service
 
         //accepted
 
-        if (request()->filled('accepted')){
-
-            $data['accepted'] = 1;
-
-        }
+//        if (request()->filled('accepted')){
+//
+//            $data['accepted'] = 1;
+//
+//        }
 
         if (request()->file('document_upload')){
 

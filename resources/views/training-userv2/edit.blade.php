@@ -65,6 +65,24 @@
 
 
 
+
+
+                    <div class="form-group row">
+
+                        <label class="col-sm-12 col-form-label text-md-left">
+                            <input type="checkbox" name="accepted" {{ $item->accepted == '1'? 'checked':'' }} value="1" />
+                            {{ __('Accept Training Invitation') }}
+                        </label>
+
+{{--                        <div class="col-md-12">--}}
+{{--                            --}}
+{{--                        </div>--}}
+
+                    </div>
+
+
+
+
                 </div>
                 <div class="modal-footer">
 
