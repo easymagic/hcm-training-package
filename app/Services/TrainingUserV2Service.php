@@ -72,7 +72,7 @@ class TrainingUserV2Service
         }
 
 
-        if (request()->file('document_upload')->isValid()){
+        if (request()->file('document_upload')){
 
             $document_upload = request()->file('document_upload')->store('',[
                 'disk'=>'uploads'

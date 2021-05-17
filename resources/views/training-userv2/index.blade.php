@@ -13,7 +13,7 @@
     margin-bottom: 17px;
     font-size: 18px;
 ">
-                        Recommend Training
+                        Recommended Trainings / Feedback
                     </div>
 
                     @include('training-userv2.create')
