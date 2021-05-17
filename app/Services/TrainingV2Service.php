@@ -100,6 +100,14 @@ class TrainingV2Service
     static function updateTraining($id){
         $obj = self::getById($id); // query()->find($id);
         $data = request()->validate(self::getValidation());
+
+//        dd(request()->all());
+
+        if (request()->filled('is_free')){
+            $data['is_free'] = request('is_free');
+        }
+
+
         $obj = $obj->update($data);
 
         return response()->json([

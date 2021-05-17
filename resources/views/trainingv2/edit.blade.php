@@ -59,7 +59,7 @@
                         <label class="col-sm-12 col-form-label text-md-left">{{ __('Is - Free?') }}</label>
 
                         <div class="col-md-12">
-                            <input  type="checkbox" {{ $item->is_free? 'checked' : '' }}   name="is_free" value="{{ $item->is_free }}" >
+                            <input  type="checkbox" {{ $item->is_free? 'checked' : '' }}   name="is_free" value="1" />
                         </div>
                     </div>
 
