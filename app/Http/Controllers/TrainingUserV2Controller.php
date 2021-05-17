@@ -24,7 +24,7 @@ class TrainingUserV2Controller extends Controller
     }
 
     function loadUsers(){
-        $this->data['users'] = User::query()->get();
+        $this->data['users'] = TrainingUserV2Service::getUsers()->get(); // User::query()->get();
     }
 
     function loadTrainingUsers(){

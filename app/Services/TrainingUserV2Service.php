@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\TrainingUserV2;
+use App\User;
 use http\Env\Response;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,17 @@ class TrainingUserV2Service
 
   static function getById($id){
       return TrainingUserV2::query()->find($id);
+  }
+
+  static function getUsers(){
+      $query = User::query();
+      $department = Auth::user()->department;
+      if (!is_null($department)){
+          $query = $query->whereHas('department',function(Builder $builder) use ($department){
+            return $builder->where('id',$department->id);
+          });
+      }
+      return $query;
   }
 
   static function fetch(){
