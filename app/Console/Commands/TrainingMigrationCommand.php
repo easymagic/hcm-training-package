@@ -97,7 +97,7 @@ class TrainingMigrationCommand extends Command
 
 
 
-        $name = 'Create Training Plan';
+        $name = 'Create / Suggest Training Plan';
         $constant = 'create_training_plan';
         if (!$checkPermission->where('name',$name)->where('constant',$constant)->exists()){
             $obj = new Permission();
@@ -122,6 +122,29 @@ class TrainingMigrationCommand extends Command
 
         $name = 'Remove Training Plan';
         $constant = 'remove_training_plan';
+        if (!$checkPermission->where('name',$name)->where('constant',$constant)->exists()){
+            $obj = new Permission();
+            $obj->permission_category_id = $permissionCategory->id;
+            $obj->name = $name;
+            $obj->constant = $constant;
+            $obj->save();
+        }
+
+
+
+        $name = 'Recommend Training';
+        $constant = 'recommend_training';
+        if (!$checkPermission->where('name',$name)->where('constant',$constant)->exists()){
+            $obj = new Permission();
+            $obj->permission_category_id = $permissionCategory->id;
+            $obj->name = $name;
+            $obj->constant = $constant;
+            $obj->save();
+        }
+
+
+        $name = 'Submit Training Feedback';
+        $constant = 'submit_training_feedback';
         if (!$checkPermission->where('name',$name)->where('constant',$constant)->exists()){
             $obj = new Permission();
             $obj->permission_category_id = $permissionCategory->id;
