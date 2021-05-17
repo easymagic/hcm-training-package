@@ -71,6 +71,13 @@ class TrainingUserV2Service
             ]);
         }
 
+        //accepted
+
+        if (request()->filled('accepted')){
+
+            $data['accepted'] = 1;
+
+        }
 
         if (request()->file('document_upload')){
 
@@ -78,18 +85,22 @@ class TrainingUserV2Service
                 'disk'=>'uploads'
             ]);
 
-            $record->update([
-                'document_upload'=>$document_upload,
-                'feedback'=>$data['feedback'],
-                'rating'=>$data['rating']
-            ]);
+            $data['document_upload'] = $document_upload;
+
+//            $record->update([
+//                'document_upload'=>$document_upload,
+//                'feedback'=>$data['feedback'],
+//                'rating'=>$data['rating']
+//            ]);
 
         }
 
-        $record->update([
-            'feedback'=>$data['feedback'],
-            'rating'=>$data['rating']
-        ]);
+        $record->update($data);
+
+//        $record->update([
+//            'feedback'=>$data['feedback'],
+//            'rating'=>$data['rating']
+//        ]);
 
 
         return response()->json([
