@@ -18,6 +18,7 @@ class TrainingUserV2Service
   }
 
   static function getUsers(){
+
       $query = User::query();
       $department = Auth::user()->department;
       if (!is_null($department)){
@@ -26,6 +27,7 @@ class TrainingUserV2Service
           });
       }
       return $query;
+      
   }
 
   static function fetch(){
