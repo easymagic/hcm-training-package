@@ -3,83 +3,68 @@
 namespace App\Http\Controllers;
 
 use App\InterviewV2;
+use App\Services\InterviewV2Service;
+use App\Traits\ResponseTraitV2;
 use Illuminate\Http\Request;
 
 class InterviewV2Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+
+    use ResponseTraitV2;
+
+    private $data = [];
+
+    function loadInterviews(){
+     $this->data['interviews'] = InterviewV2Service::fetch()->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    function loadJobRoles(){
+        $this->data['job_roles'] = InterviewV2Service::getJobRoles();
+    }
+
+    public function index()
+    {
+
+        $this->loadInterviews();
+        $this->loadJobRoles();
+
+        return view('interviewv2.index',$this->data);
+
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
+    {
+        //
+        return $this->resolveResponse(InterviewV2Service::store());
+
+    }
+
+    public function show($id)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\InterviewV2  $interviewV2
-     * @return \Illuminate\Http\Response
-     */
-    public function show(InterviewV2 $interviewV2)
+    public function edit($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\InterviewV2  $interviewV2
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(InterviewV2 $interviewV2)
+    public function update($id)
     {
         //
+        return $this->resolveResponse(InterviewV2Service::update($id));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\InterviewV2  $interviewV2
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, InterviewV2 $interviewV2)
+    public function destroy($id)
     {
         //
+        return $this->resolveResponse(InterviewV2Service::destroy($id));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\InterviewV2  $interviewV2
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(InterviewV2 $interviewV2)
-    {
-        //
-    }
+
 }

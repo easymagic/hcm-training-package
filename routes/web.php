@@ -677,3 +677,8 @@ Route::resource('training-budgetv2', 'TrainingBudgetV2Controller')->middleware([
 Route::resource('training-userv2', 'TrainingUserV2Controller')->middleware(['auth']);
 Route::resource('module-approval', 'ModuleApprovalController')->middleware(['auth']);
 //ModuleApprovalController
+
+///////Interview module///////
+Route::resource('interviewv2', 'InterviewV2Controller')->middleware(['auth']);
+
+
