@@ -13,23 +13,23 @@
     margin-bottom: 17px;
     font-size: 18px;
 ">
-                      {{ $interview->name }}  (Interview Question)
+                      Assessment For Candidate ({{ $interview->name }})
                     </div>
 
-                    @include('interview-assessmentv2.create')
+{{--                    @include('interview-assessmentv2.create')--}}
 
-                    @foreach ($assessments as $item)
+                    @foreach ($list as $item)
 
 
-                        @include('interview-assessmentv2.edit')
+                        @include('interview-assessment-candidatev2.edit')
 
 
                     @endforeach
 
 
-                    <div class="col-md-12" align="right">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Interview Question</button>
-                    </div>
+{{--                    <div class="col-md-12" align="right">--}}
+{{--                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Interview Question</button>--}}
+{{--                    </div>--}}
 
 
 {{--                    <div class="col-md-12" align="left" style="padding: 0;">--}}
@@ -47,11 +47,14 @@
                             <th>
                                 Max-Rating
                             </th>
+                            <th>
+                                Score
+                            </th>
                             <th style="text-align: right;">
                                 Actions
                             </th>
                         </tr>
-                        @foreach ($assessments as $item)
+                        @foreach ($list as $item)
 
 
                             <tr>

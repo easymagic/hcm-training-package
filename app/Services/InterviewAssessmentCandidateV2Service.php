@@ -19,7 +19,7 @@ class InterviewAssessmentCandidateV2Service
 
             $interview_assessment_id = $item->interview_assessment_id;
             //score
-            $check = self::getByAssessment($interview_assessment_id,$candidateId);
+            $check = self::fetchByAssessment($interview_assessment_id,$candidateId);
 
             if ($check->exists()){
                 $list[$k]->candidate_score = $check->first()->score;
@@ -79,17 +79,27 @@ class InterviewAssessmentCandidateV2Service
            'score'=>'required',
            'candidate_id'=>'required'
        ]);
-       $obj = new InterviewAssessmentCandidateV2;
-       $obj = $obj->create($data);
 
-       return response()->json([
-           'message'=>'Interview assessment saved.',
-           'error'=>false
-       ]);
+       $check = self::fetchByAssessment($data['interview_assessment_id'],$data['candidate_id']);
+
+       if (!$check->exists()){
+           $obj = new InterviewAssessmentCandidateV2;
+           $obj = $obj->create($data);
+
+           return response()->json([
+               'message'=>'New Interview assessment-score saved successfully.',
+               'error'=>false
+           ]);
+       }
+
+       $record = $check->first();
+
+       return self::update($record->id);
 
     }
 
     static function update($id){
+
         $record = self::getById($id);
         $data = request()->validate([
             'interview_assessment_id'=>'required',
@@ -100,7 +110,7 @@ class InterviewAssessmentCandidateV2Service
         $record->update($data);
 
         return response()->json([
-            'message'=>'Interview assessment saved.',
+            'message'=>'Interview assessment-score saved.',
             'error'=>false
         ]);
 
