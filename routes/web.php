@@ -680,5 +680,6 @@ Route::resource('module-approval', 'ModuleApprovalController')->middleware(['aut
 
 ///////Interview module///////
 Route::resource('interviewv2', 'InterviewV2Controller')->middleware(['auth']);
+Route::resource('interview-assessmentv2', 'InterviewAssessmentV2Controller')->middleware(['auth']);
 
 
