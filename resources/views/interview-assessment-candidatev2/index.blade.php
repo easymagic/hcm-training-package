@@ -35,10 +35,12 @@
                     <div class="col-md-12" align="left" style="padding: 0;">
 
                         <form action="?" method="get">
-                            <select name="candidate" id="" style="margin-bottom: 11px;">
+                            <select name="candidate" id="candidate" style="margin-bottom: 11px;">
                                 <option>--Select--</option>
                                 @foreach ($candidates as $candidate)
-                                    <option value="{{ $candidate->id }}">{{ $candidate->name }}</option>
+                                    <option
+                                            {{ (request()->filled('candidate') && request('candidate') == $candidate->id)? 'selected' : '' }}
+                                            value="{{ $candidate->id }}">{{ $candidate->name }}</option>
                                 @endforeach
                             </select>
 
@@ -71,19 +73,13 @@
                                 <td>
                                     {{ $item->max_rating }}%
                                 </td>
+                                <td>
+                                    {{ $item->candidate_score }}
+                                </td>
                                 <td style="text-align: right;">
 
 
-                                    <a type="button" data-toggle="modal" style="margin-bottom: 11px;color: #fff;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-primary">Edit</a>
-
-                                    <form style="display: inline-block" method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('interview-assessmentv2.destroy',$item->id) }}">
-
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button style="position: relative;top: -6px;" type="submit" class=" btn btn-danger btn-sm" data-backdrop="false"  data-toggle="modal" data-target="#approveReject" >Remove</button>
-
-                                    </form>
+                                    <a type="button" data-toggle="modal" style="margin-bottom: 11px;color: #fff;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-warning">Score Candidate</a>
 
 
                                 </td>
@@ -116,6 +112,12 @@
         // alert(1);
         (function($){
             $(function(){
+
+
+                $('#candidate').on('change',function(){
+                    var id = $(this).val();
+                    location.href = `{{ route('interview-assessment-candidatev2.show',[$id]) }}?candidate=${id}`;
+                });
 
                 setTimeout(()=>{
                     // $('#user_ids').select2();

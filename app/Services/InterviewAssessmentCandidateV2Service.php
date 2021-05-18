@@ -12,19 +12,24 @@ class InterviewAssessmentCandidateV2Service
 {
 
     static function fetchCandidates($interviewId){
-        dd($interviewId);
-        return User::query()->where('id',1)->get();
+        return User::query();
+    }
+
+    static function getCandidate($candidateId){
+        return User::query()->find($candidateId);
     }
 
 
     static function mapRecordsToCandidateScore($interviewId,$candidateId){
 
 //        dd(90);
-        $list = self::fetchByInterview($interviewId)->get();
+        $list = self::fetchTemplateByInterView($interviewId)->get();
+
+//        dd($list);
 
         foreach ($list as $k=>$item){
 
-            $interview_assessment_id = $item->interview_assessment_id;
+            $interview_assessment_id = $item->id;
             //score
             $check = self::fetchByAssessment($interview_assessment_id,$candidateId);
 
@@ -33,12 +38,19 @@ class InterviewAssessmentCandidateV2Service
                 continue;
             }
 
-            $list[$k]->candidate_score = 'n/a';
+            $list[$k]->candidate_score = '0.0';
 
         }
 
+//        dd($list);
+
         return $list;
 
+    }
+
+    static function fetchTemplateByInterView($interviewId){
+        $query = InterviewAssessmentV2Service::fetch($interviewId);
+        return $query;
     }
 
 

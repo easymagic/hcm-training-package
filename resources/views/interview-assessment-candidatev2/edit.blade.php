@@ -7,9 +7,9 @@
 
         <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" style="text-transform: uppercase;">
 
-                    Edit Interview Question
+                    Rate/Score Candidate ({{ $candidate->name }})
 
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
@@ -20,14 +20,15 @@
 
                     @method('PUT')
 
-                    <input type="hidden" name="interview_id" value="{{ $item->interview_id }}" />
+                    <input type="hidden" name="interview_assessment_id" value="{{ $item->id }}" />
+                    <input type="hidden" name="candidate_id" value="{{ request('candidate') }}" />
 
 
                     <div class="form-group row">
                         <label class="col-sm-12 col-form-label text-md-left">{{ __('Competency') }}</label>
 
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" name="competency" value="{{ $item->competency }}" />
+                        <div class="col-md-12" style="border: 1px solid #ddd;background-color: #eee;padding: 12px;">
+                            {{ $item->competency }}
                         </div>
                     </div>
 
@@ -35,10 +36,10 @@
 
                     <div class="form-group row">
 
-                        <label class="col-sm-12 col-form-label text-md-left">{{ __('Max-Rating') }}</label>
+                        <label class="col-sm-12 col-form-label text-md-left">{{ __('Score (Max: ' . $item->max_rating . ')') }}</label>
 
                         <div class="col-md-12">
-                            <input type="number" name="max_rating" class="form-control" value="{{ $item->max_rating }}" />
+                            <input type="number" name="score" class="form-control" value="{{ $item->candidate_score }}" />
                         </div>
 
                     </div>
@@ -48,7 +49,7 @@
                 <div class="modal-footer">
 
                     <button type="submit" class="btn btn-primary pull-left">
-                        {{ __('Update Interview Question') }}
+                        {{ __('Submit Score') }}
                     </button>
 
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -20,6 +20,7 @@ class InterviewAssessmentCandidateV2Controller extends Controller
     function loadInterviewAssessmentData($interviewId){
 
         $this->data['list'] = [];
+        $this->data['id'] = $interviewId;
 
 //        dd(123);
 
@@ -29,8 +30,11 @@ class InterviewAssessmentCandidateV2Controller extends Controller
 
         if (\request()->filled('candidate')){
             $candidate = request('candidate');
+            $this->data['candidate'] = InterviewAssessmentCandidateV2Service::getCandidate($candidate);
             $this->data['list'] = InterviewAssessmentCandidateV2Service::mapRecordsToCandidateScore($interviewId,$candidate);
         }
+
+//        dd($this->data);
 
         $this->data['interview'] = InterviewV2Service::getById($interviewId);
     }
@@ -74,15 +78,23 @@ class InterviewAssessmentCandidateV2Controller extends Controller
     }
 
 
-    public function update(Request $request, InterviewAssessmentCandidateV2 $interviewAssessmentCandidateV2)
+    public function update($id)
     {
         //
+        return $this->resolveResponse(InterviewAssessmentCandidateV2Service::update($id));
     }
 
 
-    public function destroy(InterviewAssessmentCandidateV2 $interviewAssessmentCandidateV2)
+    public function destroy($id)
     {
         //
+
+        return $this->resolveResponse(response()->json([
+            'message'=>'Operation not allowed!',
+            'error'=>true
+        ]));
+
     }
+
 
 }
