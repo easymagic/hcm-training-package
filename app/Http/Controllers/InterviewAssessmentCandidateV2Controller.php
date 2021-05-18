@@ -21,6 +21,12 @@ class InterviewAssessmentCandidateV2Controller extends Controller
 
         $this->data['list'] = [];
 
+//        dd(123);
+
+        $this->data['candidates'] = InterviewAssessmentCandidateV2Service::fetchCandidates($interviewId)->get();
+
+
+
         if (\request()->filled('candidate')){
             $candidate = request('candidate');
             $this->data['list'] = InterviewAssessmentCandidateV2Service::mapRecordsToCandidateScore($interviewId,$candidate);

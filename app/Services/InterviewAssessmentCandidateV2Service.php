@@ -5,14 +5,21 @@ namespace App\Services;
 
 
 use App\Models\InterviewAssessmentCandidateV2;
+use App\User;
 use Illuminate\Database\Eloquent\Builder;
 
 class InterviewAssessmentCandidateV2Service
 {
 
+    static function fetchCandidates($interviewId){
+        dd($interviewId);
+        return User::query()->where('id',1)->get();
+    }
+
 
     static function mapRecordsToCandidateScore($interviewId,$candidateId){
 
+//        dd(90);
         $list = self::fetchByInterview($interviewId)->get();
 
         foreach ($list as $k=>$item){

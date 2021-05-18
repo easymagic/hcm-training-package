@@ -32,12 +32,18 @@
 {{--                    </div>--}}
 
 
-{{--                    <div class="col-md-12" align="left" style="padding: 0;">--}}
+                    <div class="col-md-12" align="left" style="padding: 0;">
 
-{{--                        <form action="?" method="get">--}}
-{{--                            <input value="{{ request()->filled('name_search')?  request('name_search') : '' }}" type="text" name="name_search" placeholder="Search Interview" style="margin-bottom: 11px;" />--}}
-{{--                        </form>--}}
-{{--                    </div>--}}
+                        <form action="?" method="get">
+                            <select name="candidate" id="" style="margin-bottom: 11px;">
+                                <option>--Select--</option>
+                                @foreach ($candidates as $candidate)
+                                    <option value="{{ $candidate->id }}">{{ $candidate->name }}</option>
+                                @endforeach
+                            </select>
+
+                        </form>
+                    </div>
 
                     <table class="table table-striped">
                         <tr>
