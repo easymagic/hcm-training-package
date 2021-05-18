@@ -7,7 +7,7 @@
 
         <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-header" style="text-transform: uppercase;">
+                <div class="modal-header" style="text-transform: uppercase;background-color: #eee;">
 
                     Rate/Score Candidate ({{ $candidate->name }})
 
