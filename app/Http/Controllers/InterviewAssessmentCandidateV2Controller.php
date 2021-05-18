@@ -27,11 +27,14 @@ class InterviewAssessmentCandidateV2Controller extends Controller
         $this->data['candidates'] = InterviewAssessmentCandidateV2Service::fetchCandidates($interviewId)->get();
 
 
+        $this->data['total_score'] = 0;
 
         if (\request()->filled('candidate')){
             $candidate = request('candidate');
             $this->data['candidate'] = InterviewAssessmentCandidateV2Service::getCandidate($candidate);
             $this->data['list'] = InterviewAssessmentCandidateV2Service::mapRecordsToCandidateScore($interviewId,$candidate);
+            $this->data['total_score'] = InterviewAssessmentCandidateV2Service::fetch($interviewId,$candidate)->sum('score');
+//            dd($this->data);
         }
 
 //        dd($this->data);

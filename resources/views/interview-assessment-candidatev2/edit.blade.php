@@ -27,7 +27,7 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-form-label text-md-left">{{ __('Competency') }}</label>
 
-                        <div class="col-md-12" style="border: 1px solid #ddd;background-color: #eee;padding: 12px;">
+                        <div class="col-md-12" style="border-top: 1px solid #ddd;background-color: #fff;padding: 12px;">
                             {{ $item->competency }}
                         </div>
                     </div>

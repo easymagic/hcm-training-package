@@ -90,6 +90,12 @@
 
 {{--                    {{ $list->links() }}--}}
 
+                    <div class="col-md-12">
+                        <b>
+                            Total Score :
+                        </b>{{ number_format($total_score,2) }} %
+                    </div>
+
 
                 </div>
             </div>
