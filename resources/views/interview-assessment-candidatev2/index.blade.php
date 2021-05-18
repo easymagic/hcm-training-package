@@ -13,72 +13,61 @@
     margin-bottom: 17px;
     font-size: 18px;
 ">
-                        Setup Interview
+                      {{ $interview->name }}  (Interview Question)
                     </div>
 
-                    @include('interviewv2.create')
+                    @include('interview-assessmentv2.create')
 
-                    @foreach ($interviews as $item)
+                    @foreach ($assessments as $item)
 
 
-                        @include('interviewv2.edit')
+                        @include('interview-assessmentv2.edit')
 
 
                     @endforeach
 
 
                     <div class="col-md-12" align="right">
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Interview</button>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" style="margin-bottom: 11px;" data-target="#create">Add Interview Question</button>
                     </div>
 
 
-                    <div class="col-md-12" align="left" style="padding: 0;">
+{{--                    <div class="col-md-12" align="left" style="padding: 0;">--}}
 
-                        <form action="?" method="get">
-                            <input value="{{ request()->filled('name_search')?  request('name_search') : '' }}" type="text" name="name_search" placeholder="Search Interview" style="margin-bottom: 11px;" />
-                        </form>
-                    </div>
+{{--                        <form action="?" method="get">--}}
+{{--                            <input value="{{ request()->filled('name_search')?  request('name_search') : '' }}" type="text" name="name_search" placeholder="Search Interview" style="margin-bottom: 11px;" />--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
 
                     <table class="table table-striped">
                         <tr>
                             <th>
-                                Job Role
+                                Competency
                             </th>
                             <th>
-                                Name
-                            </th>
-                            <th>
-                                Interviewer
+                                Max-Rating
                             </th>
                             <th style="text-align: right;">
                                 Actions
                             </th>
                         </tr>
-                        @foreach ($interviews as $item)
+                        @foreach ($assessments as $item)
 
 
                             <tr>
 
                                 <td>
-                                    {{ $item->job_role_id }}
+                                    {{ $item->competency }}
                                 </td>
                                 <td>
-                                    {{ $item->name }}
-                                </td>
-                                <td>
-                                    {{ $item->interviewer_user->email }}
+                                    {{ $item->max_rating }}%
                                 </td>
                                 <td style="text-align: right;">
-
-                                    <a target="_blank" style="margin-bottom: 11px;color: #fff;" href="{{ route('interview-assessment-candidatev2.show',[$item->id]) }}"  class="btn btn-sm btn-info">Review Candidates</a>
-
-
-                                    <a target="_blank" style="margin-bottom: 11px;color: #fff;" href="{{ route('interview-assessmentv2.show',[$item->id]) }}"  class="btn btn-sm btn-warning">Questions</a>
 
 
                                     <a type="button" data-toggle="modal" style="margin-bottom: 11px;color: #fff;" data-target="#edit{{ $item->id }}" class="btn btn-sm btn-primary">Edit</a>
 
-                                    <form style="display: inline-block" method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('interviewv2.destroy',$item->id) }}">
+                                    <form style="display: inline-block" method="post" onsubmit="return confirm('Do you want to confirm this action?')" action="{{ route('interview-assessmentv2.destroy',$item->id) }}">
 
                                         @csrf
                                         @method('DELETE')
@@ -93,6 +82,8 @@
 
                         @endforeach
                     </table>
+
+{{--                    {{ $list->links() }}--}}
 
 
                 </div>
@@ -118,7 +109,7 @@
             $(function(){
 
                 setTimeout(()=>{
-                    $('#user_ids').select2();
+                    // $('#user_ids').select2();
                 },1000);
 
 
