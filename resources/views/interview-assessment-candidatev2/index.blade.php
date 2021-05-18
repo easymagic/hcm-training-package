@@ -74,7 +74,7 @@
                                     {{ $item->max_rating }}%
                                 </td>
                                 <td>
-                                    {{ $item->candidate_score }}
+                                    {{ $item->candidate_score }}%
                                 </td>
                                 <td style="text-align: right;">
 

@@ -1,5 +1,5 @@
 <!-- Modal -->
-<form method="POST" action="{{ route('interview-assessmentv2.update',[$item->id]) }}">
+<form method="POST" action="{{ route('interview-assessment-candidatev2.store') }}">
     <div id="edit{{ $item->id }}" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -18,7 +18,7 @@
 
                     @csrf
 
-                    @method('PUT')
+{{--                    @method('PUT')--}}
 
                     <input type="hidden" name="interview_assessment_id" value="{{ $item->id }}" />
                     <input type="hidden" name="candidate_id" value="{{ request('candidate') }}" />
@@ -36,7 +36,7 @@
 
                     <div class="form-group row">
 
-                        <label class="col-sm-12 col-form-label text-md-left">{{ __('Score (Max: ' . $item->max_rating . ')') }}</label>
+                        <label class="col-sm-12 col-form-label text-md-left">{{ __('Score (Max: ' . $item->max_rating . '%)') }}</label>
 
                         <div class="col-md-12">
                             <input type="number" name="score" class="form-control" value="{{ $item->candidate_score }}" />
