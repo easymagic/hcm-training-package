@@ -16,6 +16,7 @@ class WorkflowPackageProvider extends ServiceProvider
     {
         //this is where publishes is defined
 
+
     $this->publishes([
 
         __DIR__ . '/../../database/migrations/2021_05_10_201339_create_module_approvals_table.php'=>base_path('database/migrations/2021_05_10_201339_create_module_approvals_table.php'),
