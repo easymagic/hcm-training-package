@@ -23,7 +23,8 @@ class WorkflowPackageProvider extends ServiceProvider
         __DIR__ . '/../../routes/'=>base_path('routes/workflow-routes/'),
         __DIR__ . '/../../app/Services/ModuleApprovalV2Service.php'=>base_path('app/Services/ModuleApprovalV2Service.php'),
         __DIR__ . '/../../app/Models/ModuleApproval.php'=>base_path('app/Models/ModuleApproval.php'),
-        __DIR__ . '/../../app/Http/Controllers/ModuleApprovalController.php'=>base_path('app/Http/Controllers/ModuleApprovalController.php')
+        __DIR__ . '/../../app/Http/Controllers/ModuleApprovalController.php'=>base_path('app/Http/Controllers/ModuleApprovalController.php'),
+        __DIR__ . '/../../app/Traits/ResponseTraitV2.php'=>base_path('app/Traits/ResponseTraitV2.php')
 
     ]);
 
