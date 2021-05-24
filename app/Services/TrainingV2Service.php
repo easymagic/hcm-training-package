@@ -143,6 +143,15 @@ class TrainingV2Service
 
         }
 
+        if ($obj->status == 1){
+
+            return response()->json([
+                'message'=>'Training already approved , cannot remove!',
+                'error'=>true
+            ]);
+
+        }
+
 
         $obj->delete();
 

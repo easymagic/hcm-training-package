@@ -256,6 +256,11 @@ class ModuleApprovalV2Service
     }
 
 
+    static function canApprove($userId,$approvalObject){
+
+    }
+
+
 
 
 }
