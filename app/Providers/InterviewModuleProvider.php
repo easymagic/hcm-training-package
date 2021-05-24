@@ -44,7 +44,9 @@ class InterviewModuleProvider extends ServiceProvider
             __DIR__ . '/../../resources/views/interviewv2'=>base_path('resources/views/interviewv2'),
 
             __DIR__ . '/../../routes/'=>base_path('routes/interview-package-routes/'),
-            __DIR__ . '/../../resources/views/response-message.blade.php'=>base_path('resources/views/response-message.blade.php')
+            __DIR__ . '/../../resources/views/response-message.blade.php'=>base_path('resources/views/response-message.blade.php'),
+            __DIR__ . '/../../resources/views/js_cdns/swal.blade.php'=>base_path('resources/views/js_cdns/swal.blade.php')
+
 
 
 
