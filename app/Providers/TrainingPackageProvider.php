@@ -41,7 +41,8 @@ class TrainingPackageProvider extends ServiceProvider
             __DIR__ . '/../../resources/views/training-userv2'=>base_path('resources/views/training-userv2'),
             __DIR__ . '/../../resources/views/trainingv2'=>base_path('resources/views/trainingv2'),
 
-            __DIR__ . '/../../routes/'=>base_path('routes/training-package-routes/')
+            __DIR__ . '/../../routes/'=>base_path('routes/training-package-routes/'),
+            __DIR__ . '/../../resources/views/response-message.blade.php'=>base_path('resources/views/response-message.blade.php')
 
 
         ]);
