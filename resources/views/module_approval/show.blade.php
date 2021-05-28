@@ -64,9 +64,13 @@
 
                     @if ($item->status == 0)
 
-                    <button type="submit" class="btn btn-primary pull-left">
-                        {{ __('Submit') }}
-                    </button>
+                        @can('update',$item)
+
+                            <button type="submit" class="btn btn-primary pull-left">
+                                {{ __('Submit') }}
+                            </button>
+
+                         @endcan
 
                     @endif
 

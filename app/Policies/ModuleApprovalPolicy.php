@@ -44,9 +44,7 @@ class ModuleApprovalPolicy
      */
     public function update(User $user, ModuleApproval $moduleApproval)
     {
-//        return true;
-        //
-//        dd(90);
+
         return ModuleApprovalV2Service::canApprove($user->id,$moduleApproval->id);
 
     }

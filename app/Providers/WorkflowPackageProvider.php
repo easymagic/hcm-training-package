@@ -27,7 +27,13 @@ class WorkflowPackageProvider extends ServiceProvider
         __DIR__ . '/../../app/Http/Controllers/ModuleApprovalController.php'=>base_path('app/Http/Controllers/ModuleApprovalController.php'),
         __DIR__ . '/../../app/Traits/ResponseTraitV2.php'=>base_path('app/Traits/ResponseTraitV2.php'),
         __DIR__ . '/../../resources/views/response-message.blade.php'=>base_path('resources/views/response-message.blade.php'),
-        __DIR__ . '/../../resources/views/js_cdns/swal.blade.php'=>base_path('resources/views/js_cdns/swal.blade.php')
+        __DIR__ . '/../../resources/views/js_cdns/swal.blade.php'=>base_path('resources/views/js_cdns/swal.blade.php'),
+
+
+        __DIR__ . '/../../app/Policies'=>base_path('app/Policies'),
+        __DIR__ . '/../../resources/views/errors'=>base('resources/views/errors')
+
+
 
 
     ]);
