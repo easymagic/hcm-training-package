@@ -256,7 +256,23 @@ class ModuleApprovalV2Service
     }
 
 
-    static function canApprove($userId,$approvalObject){
+    static function canApprove($userId,$id){
+
+//        return false;
+
+        $licencedUsers = self::getSubscribers($id);
+
+        $userIdList = [];
+
+        foreach ($licencedUsers as $user){
+
+            $userIdList[] = $user->id;
+
+        }
+
+//        dd($userIdList);
+
+        return in_array($userId,$userIdList);
 
     }
 

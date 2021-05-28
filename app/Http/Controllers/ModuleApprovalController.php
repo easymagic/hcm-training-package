@@ -36,7 +36,11 @@ class ModuleApprovalController extends Controller
     {
 
         $module = base64_decode(\request('module'));
-        $this->data['list'] = ModuleApprovalV2Service::fetchApprovalsByModule($id,$module);
+        $list = ModuleApprovalV2Service::fetchApprovalsByModule($id,$module);
+//        foreach ($list as $k=>$item){
+//            $list[$k]->can_approve
+//        }
+        $this->data['list'] = $list;  //ModuleApprovalV2Service::fetchApprovalsByModule($id,$module);
         $this->data['module'] = ModuleApprovalV2Service::getModuleObjectByModule($id,$module);
 
         return view('module_approval.index',$this->data);
@@ -53,6 +57,9 @@ class ModuleApprovalController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $this->authorize('update',ModuleApprovalV2Service::getById($id));
+
 
         $action = \request('action');
 
