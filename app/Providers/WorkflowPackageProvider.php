@@ -31,7 +31,7 @@ class WorkflowPackageProvider extends ServiceProvider
 
 
         __DIR__ . '/../../app/Policies'=>base_path('app/Policies'),
-        __DIR__ . '/../../resources/views/errors'=>base('resources/views/errors')
+        __DIR__ . '/../../resources/views/errors'=>base_path('resources/views/errors')
 
 
 
