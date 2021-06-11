@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 
 use App\Models\InterviewAssessmentCandidateV2;
+use App\Services\Interfaces\InterviewAssessmentCandidateV2ServiceInterface;
 use App\Services\InterviewAssessmentCandidateV2Service;
 use App\Services\InterviewV2Service;
 use App\Traits\ResponseTraitV2;
+use App\User;
 use Illuminate\Http\Request;
 
-class InterviewAssessmentCandidateV2Controller extends Controller
+class InterviewAssessmentCandidateV2Controller extends Controller implements InterviewAssessmentCandidateV2ServiceInterface
 {
 
     use ResponseTraitV2;
@@ -24,7 +26,8 @@ class InterviewAssessmentCandidateV2Controller extends Controller
 
 //        dd(123);
 
-        $this->data['candidates'] = InterviewAssessmentCandidateV2Service::fetchCandidates($interviewId)->get();
+        $this->data['candidates'] = InterviewAssessmentCandidateV2Service::fetchCandidates($this);
+        $this->data['job_roles'] = InterviewAssessmentCandidateV2Service::getJobRoles($this);
 
 
         $this->data['total_score'] = 0;
@@ -99,5 +102,37 @@ class InterviewAssessmentCandidateV2Controller extends Controller
 
     }
 
+
+    static function fetchCandidates()
+    {
+        // TODO: Implement fetchCandidates() method.
+//        dd(123);
+        return User::query()->get();
+    }
+
+    static function getJobRoles()
+    {
+        // TODO: Implement getJobRoles() method.
+        // TODO: Implement getJobRoles() method.
+
+        $list = [];
+
+        $job = new \stdClass();
+        $job->name = 'Senior Developer';
+        $job->id = 1;
+
+        $list[] = $job;
+
+        $job = new \stdClass();
+        $job->name = 'Junior Developer';
+        $job->id = 2;
+
+        $list[] = $job;
+
+//        dd($list);
+
+        return $list;
+
+    }
 
 }

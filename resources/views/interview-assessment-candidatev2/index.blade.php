@@ -36,13 +36,24 @@
 
                         <form action="?" method="get">
                             <select name="candidate" id="candidate" style="margin-bottom: 11px;">
-                                <option>--Select--</option>
+                                <option>--Select Candidate--</option>
                                 @foreach ($candidates as $candidate)
                                     <option
                                             {{ (request()->filled('candidate') && request('candidate') == $candidate->id)? 'selected' : '' }}
                                             value="{{ $candidate->id }}">{{ $candidate->name }}</option>
                                 @endforeach
                             </select>
+
+
+                            <select name="job_role" id="job_role" style="margin-bottom: 11px;">
+                                <option>--Select Job Role--</option>
+                                @foreach ($job_roles as $job_role)
+                                    <option
+                                            {{ (request()->filled('job_role') && request('job_role') == $job_role->id)? 'selected':'' }}
+                                            value="{{ $job_role->id }}">{{ $job_role->name }}</option>
+                                @endforeach
+                            </select>
+
 
                         </form>
                     </div>
@@ -122,12 +133,19 @@
 
                 $('#candidate').on('change',function(){
                     var id = $(this).val();
-                    location.href = `{{ route('interview-assessment-candidatev2.show',[$id]) }}?candidate=${id}`;
+                    location.href = `{{ route('interview-assessment-candidatev2.show',[$id]) }}?candidate=${id}&job_role=${$('#job_role').val()}`;
                 });
 
                 setTimeout(()=>{
                     // $('#user_ids').select2();
                 },1000);
+
+                $('#job_role').on('change',function(){
+
+                    var id = $(this).val();
+                    location.href = `{{ route('interview-assessment-candidatev2.show',[$id]) }}?job_role=${id}`;
+
+                });
 
 
             });

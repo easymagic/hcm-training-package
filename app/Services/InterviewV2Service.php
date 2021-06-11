@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\InterviewV2;
+use App\Services\Interfaces\InterviewV2ServiceInterface;
 use App\User;
 
 class InterviewV2Service
@@ -24,28 +25,31 @@ class InterviewV2Service
         return InterviewV2::query()->find($id);
     }
 
-    static function getJobRoles(){
+    static function getJobRoles(InterviewV2ServiceInterface $interface){
 
-        $list = [];
+        return $interface::getJobRoles();
 
-        $job = new \stdClass();
-        $job->name = 'Senior Developer';
-        $job->id = 1;
-
-        $list[] = $job;
-
-        $job = new \stdClass();
-        $job->name = 'Junior Developer';
-        $job->id = 2;
-
-        $list[] = $job;
-
-        return $list;
+//        $list = [];
+//
+//        $job = new \stdClass();
+//        $job->name = 'Senior Developer';
+//        $job->id = 1;
+//
+//        $list[] = $job;
+//
+//        $job = new \stdClass();
+//        $job->name = 'Junior Developer';
+//        $job->id = 2;
+//
+//        $list[] = $job;
+//
+//        return $list;
 
     }
 
-    static function getInterviewers(){
-        return User::query()->get();
+    static function getInterviewers(InterviewV2ServiceInterface $interface){
+        return $interface::getInterviewers();
+        //return User::query()->get();
     }
 
     static function store(){

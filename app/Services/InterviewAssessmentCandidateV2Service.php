@@ -5,14 +5,38 @@ namespace App\Services;
 
 
 use App\Models\InterviewAssessmentCandidateV2;
+use App\Services\Interfaces\InterviewAssessmentCandidateV2ServiceInterface;
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
 
 class InterviewAssessmentCandidateV2Service
 {
 
-    static function fetchCandidates($interviewId){
-        return User::query();
+    static function fetchCandidates(InterviewAssessmentCandidateV2ServiceInterface $interface){
+        return $interface::fetchCandidates();
+//        return User::query();
+    }
+
+    static function getJobRoles(InterviewAssessmentCandidateV2ServiceInterface $interface){
+        // TODO: Implement getJobRoles() method.
+        return $interface::getJobRoles();
+//        $list = [];
+//
+//        $job = new \stdClass();
+//        $job->name = 'Senior Developer';
+//        $job->id = 1;
+//
+//        $list[] = $job;
+//
+//        $job = new \stdClass();
+//        $job->name = 'Junior Developer';
+//        $job->id = 2;
+//
+//        $list[] = $job;
+//
+////        dd($list);
+//
+//        return $list;
     }
 
     static function getCandidate($candidateId){
