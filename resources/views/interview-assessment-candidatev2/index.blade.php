@@ -35,6 +35,17 @@
                     <div class="col-md-12" align="left" style="padding: 0;">
 
                         <form action="?" method="get">
+
+                            <select name="job_role" id="job_role" style="margin-bottom: 11px;">
+                                <option>--Select Job Role--</option>
+                                @foreach ($job_roles as $job_role)
+                                    <option
+                                            {{ (request()->filled('job_role') && request('job_role') == $job_role->id)? 'selected':'' }}
+                                            value="{{ $job_role->id }}">{{ $job_role->name }}</option>
+                                @endforeach
+                            </select>
+
+
                             <select name="candidate" id="candidate" style="margin-bottom: 11px;">
                                 <option>--Select Candidate--</option>
                                 @foreach ($candidates as $candidate)
@@ -45,14 +56,6 @@
                             </select>
 
 
-                            <select name="job_role" id="job_role" style="margin-bottom: 11px;">
-                                <option>--Select Job Role--</option>
-                                @foreach ($job_roles as $job_role)
-                                    <option
-                                            {{ (request()->filled('job_role') && request('job_role') == $job_role->id)? 'selected':'' }}
-                                            value="{{ $job_role->id }}">{{ $job_role->name }}</option>
-                                @endforeach
-                            </select>
 
 
                         </form>
